@@ -47,7 +47,7 @@
   border: 3px solid var(--mc-dark-brown);
   cursor: pointer;
   transition: all 0.2s;
-  text-transform: uppercase;
+  text-transform: capitalize;
   position: relative;
 }
 
@@ -61,6 +61,12 @@
   border-color: var(--mc-dark-green);
   box-shadow: 0 0 12px rgba(76, 175, 80, 0.4);
   transform: translateY(-2px);
+}
+
+.tab-favorites.active {
+  background: linear-gradient(180deg, #ff9800, #e65100);
+  border-color: #bf360c;
+  box-shadow: 0 0 12px rgba(255, 152, 0, 0.4);
 }
 
 .card-grid {
@@ -104,7 +110,7 @@
   padding: 8px 6px;
   font-size: 0.5rem;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: capitalize;
   letter-spacing: 1px;
 }
 

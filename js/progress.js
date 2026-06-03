@@ -1,5 +1,6 @@
 let config = null;
 let progressData = {};
+let favoritesData = {};
 let currentUsername = null;
 
 export async function loadConfig() {
@@ -18,6 +19,11 @@ export function initProgress(username) {
   const saved = localStorage.getItem(key);
   if (saved) progressData = JSON.parse(saved);
   else progressData = {};
+
+  const favKey = `mc-favorites-${username}`;
+  const favSaved = localStorage.getItem(favKey);
+  if (favSaved) favoritesData = JSON.parse(favSaved);
+  else favoritesData = {};
 }
 
 function saveProgress() {
@@ -53,4 +59,28 @@ export function markCardCompleted(categoryId, cardIndex) {
 
 export function getCompletedCards(categoryId) {
   return progressData[categoryId] || [];
+}
+
+function saveFavorites() {
+  if (!currentUsername) return;
+  localStorage.setItem(`mc-favorites-${currentUsername}`, JSON.stringify(favoritesData));
+}
+
+export function toggleFavorite(categoryId, cardId) {
+  if (!favoritesData[categoryId]) favoritesData[categoryId] = [];
+  const idx = favoritesData[categoryId].indexOf(cardId);
+  if (idx >= 0) {
+    favoritesData[categoryId].splice(idx, 1);
+  } else {
+    favoritesData[categoryId].push(cardId);
+  }
+  saveFavorites();
+}
+
+export function isFavorited(categoryId, cardId) {
+  return (favoritesData[categoryId] || []).includes(cardId);
+}
+
+export function getFavorites() {
+  return favoritesData;
 }

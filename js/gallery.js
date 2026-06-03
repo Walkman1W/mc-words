@@ -2,7 +2,9 @@ import { getCategories, getCurrentCategory, setCurrentCategory } from './categor
 import { getCardsForCategory, getCardImagePath } from './cardData.js';
 import { openGame } from './game.js';
 import { getCategoryTime, getLeaderboard, getPlayerRank, formatTimeMs } from './timer.js';
-import { getConfig, isCardUnlocked } from './progress.js';
+import { getConfig, isCardUnlocked, getFavorites } from './progress.js';
+
+let showingFavorites = false;
 
 export function initGallery() {
   renderTabs();
@@ -16,10 +18,14 @@ function renderTabs() {
   const categories = getCategories();
 
   tabsContainer.innerHTML = categories.map(cat => `
-    <button class="tab-btn ${cat.id === getCurrentCategory() ? 'active' : ''}" data-id="${cat.id}">
+    <button class="tab-btn ${!showingFavorites && cat.id === getCurrentCategory() ? 'active' : ''}" data-id="${cat.id}">
       ${cat.label}
     </button>
-  `).join('');
+  `).join('') + `
+    <button class="tab-btn tab-favorites ${showingFavorites ? 'active' : ''}" data-id="__favorites__">
+      ⭐ Favorites
+    </button>
+  `;
 
   tabsContainer.addEventListener('click', (e) => {
     const btn = e.target.closest('.tab-btn');
@@ -27,13 +33,25 @@ function renderTabs() {
 
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    setCurrentCategory(btn.dataset.id);
-    renderCards();
-    renderCategoryStats();
+
+    if (btn.dataset.id === '__favorites__') {
+      showingFavorites = true;
+      renderFavorites();
+      renderCategoryStats();
+    } else {
+      showingFavorites = false;
+      setCurrentCategory(btn.dataset.id);
+      renderCards();
+      renderCategoryStats();
+    }
   });
 }
 
 export function renderCards() {
+  if (showingFavorites) {
+    renderFavorites();
+    return;
+  }
   const grid = document.getElementById('card-grid');
   const categoryId = getCurrentCategory();
   const cards = getCardsForCategory(categoryId);
@@ -83,8 +101,58 @@ export function renderCards() {
   });
 }
 
+function renderFavorites() {
+  const grid = document.getElementById('card-grid');
+  const favorites = getFavorites();
+  const categories = getCategories();
+
+  let allFavCards = [];
+  for (const cat of categories) {
+    const favIds = favorites[cat.id] || [];
+    if (favIds.length === 0) continue;
+    const cards = getCardsForCategory(cat.id);
+    for (const card of cards) {
+      if (favIds.includes(card.id)) {
+        allFavCards.push({ card, categoryId: cat.id, categoryLabel: cat.label });
+      }
+    }
+  }
+
+  if (allFavCards.length === 0) {
+    grid.innerHTML = `<div class="empty-state">No favorites yet.<br>Complete cards and click ⭐ to collect!</div>`;
+    return;
+  }
+
+  grid.innerHTML = allFavCards.map(({ card, categoryId }) => {
+    const imgPath = getCardImagePath(categoryId, card.image);
+    const cards = getCardsForCategory(categoryId);
+    const index = cards.findIndex(c => c.id === card.id);
+    return `
+      <div class="card-thumb" data-category="${categoryId}" data-index="${index}">
+        <img src="${imgPath}" alt="${card.word}" onerror="this.style.display='none'">
+        <div class="card-label">${card.word}</div>
+      </div>
+    `;
+  }).join('');
+
+  grid.querySelectorAll('.card-thumb').forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      const cat = thumb.dataset.category;
+      const idx = parseInt(thumb.dataset.index);
+      const cardInfo = getCardsForCategory(cat)[idx];
+      openGame(cardInfo, cat, idx);
+    });
+  });
+}
+
 function renderCategoryStats() {
   const statsEl = document.getElementById('category-stats');
+
+  if (showingFavorites) {
+    statsEl.innerHTML = '';
+    return;
+  }
+
   const categoryId = getCurrentCategory();
   const totalTime = getCategoryTime(categoryId);
   const playerRank = getPlayerRank(categoryId);

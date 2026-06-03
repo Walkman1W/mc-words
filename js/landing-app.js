@@ -1,14 +1,18 @@
-import { initAuth, getCurrentUser, isUsernameTaken, createUser, loginUser } from './auth.js';
+import { initAuth, getCurrentUser, getUsers, isUsernameTaken, createUser, loginUser } from './auth.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const savedUser = initAuth();
   const input = document.getElementById('username-input');
   const btn = document.getElementById('btn-start');
   const error = document.getElementById('login-error');
+  const dropdownBtn = document.getElementById('btn-user-dropdown');
+  const dropdown = document.getElementById('user-dropdown');
 
   if (savedUser) {
     input.value = savedUser;
   }
+
+  renderDropdown();
 
   btn.addEventListener('click', () => {
     handleStart();
@@ -17,6 +21,36 @@ document.addEventListener('DOMContentLoaded', () => {
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') handleStart();
   });
+
+  dropdownBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdown.classList.toggle('hidden');
+    renderDropdown();
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target) && e.target !== dropdownBtn) {
+      dropdown.classList.add('hidden');
+    }
+  });
+
+  function renderDropdown() {
+    const users = getUsers();
+    if (users.length === 0) {
+      dropdown.innerHTML = '<div class="dropdown-empty">No history</div>';
+      return;
+    }
+    dropdown.innerHTML = users.map(u => `
+      <div class="dropdown-item" data-user="${u}">${u}</div>
+    `).join('');
+    dropdown.querySelectorAll('.dropdown-item').forEach(item => {
+      item.addEventListener('click', () => {
+        input.value = item.dataset.user;
+        dropdown.classList.add('hidden');
+        handleStart();
+      });
+    });
+  }
 
   function handleStart() {
     const username = input.value.trim();

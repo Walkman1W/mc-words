@@ -1,6 +1,6 @@
 import { getCardImagePath } from './cardData.js';
 import { startCardTimer, stopCardTimer, recordCardTime, formatTimeMs } from './timer.js';
-import { markCardCompleted, getConfig } from './progress.js';
+import { markCardCompleted, getConfig, toggleFavorite, isFavorited } from './progress.js';
 
 let currentCard = null;
 let currentCategoryId = null;
@@ -16,6 +16,8 @@ let dropController = null;
 export function initGame() {
   document.getElementById('btn-close-modal').addEventListener('click', closeGame);
   document.getElementById('btn-back-gallery').addEventListener('click', onBackClick);
+  document.getElementById('btn-favorite').addEventListener('click', onFavoriteClick);
+  document.getElementById('btn-retry').addEventListener('click', onRetryClick);
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
@@ -37,7 +39,7 @@ export function openGame(card, categoryId, cardIndex) {
   currentCardIndex = cardIndex;
   attempts = 0;
   isSuccess = false;
-  targetWord = card.word.replace(/\s+/g, '');
+  targetWord = card.word.replace(/\s+/g, '').toLowerCase();
 
   const config = getConfig();
   const timeLimit = targetWord.length * config.timer.secondsPerLetter;
@@ -56,7 +58,9 @@ export function openGame(card, categoryId, cardIndex) {
 
 function closeGame() {
   stopCardTimer();
-  document.getElementById('game-modal').classList.add('hidden');
+  const modal = document.getElementById('game-modal');
+  modal.classList.add('hidden');
+  modal.querySelector('.modal-content').classList.remove('result-mode');
   cleanupListeners();
   currentCard = null;
   currentCategoryId = null;
@@ -64,11 +68,11 @@ function closeGame() {
 }
 
 function onBackClick() {
-  if (isSuccess) {
-    closeGame();
-  } else {
-    retryCurrentCard();
-  }
+  closeGame();
+}
+
+function onRetryClick() {
+  retryCurrentCard();
 }
 
 function retryCurrentCard() {
@@ -110,6 +114,7 @@ function setupSpellingGame() {
   const letterPool = document.getElementById('game-letter-pool');
   const feedback = document.getElementById('game-feedback');
   const attemptsEl = document.getElementById('game-attempts');
+  const retryBar = document.getElementById('game-retry-bar');
 
   const imgPath = getCardImagePath(currentCategoryId, currentCard.image);
   thumbImg.src = imgPath;
@@ -120,6 +125,7 @@ function setupSpellingGame() {
   feedback.textContent = '';
   feedback.className = 'game-feedback';
   attemptsEl.textContent = `Attempts: ${attempts} / ${MAX_ATTEMPTS}`;
+  retryBar.classList.remove('hidden');
 
   dropZone.innerHTML = '<span class="drop-hint">Drop letters here</span>';
 
@@ -242,12 +248,12 @@ function onWrong() {
   attemptsEl.textContent = `Attempts: ${attempts} / ${MAX_ATTEMPTS}`;
 
   if (attempts >= MAX_ATTEMPTS) {
-    feedback.textContent = `Answer: ${currentCard.word.toUpperCase()}`;
+    feedback.textContent = `✗ Answer: ${capitalize(currentCard.word)}`;
     feedback.className = 'game-feedback error';
     const elapsed = recordCardTime(currentCard.id, currentCategoryId, false);
     showCardTime(elapsed);
     cleanupListeners();
-    setTimeout(() => showResult(), 1500);
+    showRetryBar();
   } else {
     feedback.textContent = `✗ Wrong! (${MAX_ATTEMPTS - attempts} left)`;
     feedback.className = 'game-feedback error';
@@ -257,14 +263,14 @@ function onWrong() {
 
 function onTimeout() {
   const feedback = document.getElementById('game-feedback');
-  feedback.textContent = `⏰ Time's up! Answer: ${currentCard.word.toUpperCase()}`;
+  feedback.textContent = `⏰ Time's up! Answer: ${capitalize(currentCard.word)}`;
   feedback.className = 'game-feedback error timeout';
 
   const elapsed = recordCardTime(currentCard.id, currentCategoryId, true);
   showCardTime(elapsed);
 
   cleanupListeners();
-  setTimeout(() => showResult(), 2000);
+  showRetryBar();
 }
 
 function showCardTime(elapsed) {
@@ -286,31 +292,57 @@ function resetDropZone() {
   });
 }
 
+function showRetryBar() {
+  const retryBar = document.getElementById('game-retry-bar');
+  retryBar.classList.remove('hidden');
+}
+
 function showResult() {
   const gameArea = document.getElementById('game-area');
   const gameResult = document.getElementById('game-result');
   const resultImage = document.getElementById('result-image');
   const resultWord = document.getElementById('result-word');
   const backBtn = document.getElementById('btn-back-gallery');
+  const favoriteBtn = document.getElementById('btn-favorite');
+  const modalContent = document.getElementById('game-modal').querySelector('.modal-content');
 
   gameArea.classList.add('hidden');
   gameResult.classList.remove('hidden');
+  modalContent.classList.add('result-mode');
 
   resultWord.textContent = currentCard.word;
 
-  if (isSuccess) {
-    const imgPath = getCardImagePath(currentCategoryId, currentCard.image);
-    resultImage.src = imgPath;
-    resultImage.alt = currentCard.word;
-    resultImage.classList.remove('hidden');
-    backBtn.textContent = '← Back to Cards';
-  } else {
-    resultImage.src = '';
-    resultImage.classList.add('hidden');
-    backBtn.textContent = '🔄 Try Again';
-  }
+  const imgPath = getCardImagePath(currentCategoryId, currentCard.image);
+  resultImage.src = imgPath;
+  resultImage.alt = currentCard.word;
+  resultImage.classList.remove('hidden');
+  backBtn.textContent = '← Back to Cards';
+  favoriteBtn.classList.remove('hidden');
+  updateFavoriteButton();
 
   document.dispatchEvent(new CustomEvent('card-completed'));
+}
+
+function onFavoriteClick() {
+  if (!currentCard || !currentCategoryId) return;
+  toggleFavorite(currentCategoryId, currentCard.id);
+  updateFavoriteButton();
+}
+
+function updateFavoriteButton() {
+  const btn = document.getElementById('btn-favorite');
+  const fav = isFavorited(currentCategoryId, currentCard.id);
+  if (fav) {
+    btn.textContent = '⭐ Collected';
+    btn.classList.add('favorited');
+  } else {
+    btn.textContent = '☆ Collect';
+    btn.classList.remove('favorited');
+  }
+}
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
 function shuffleArray(arr) {
