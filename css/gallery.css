@@ -1,0 +1,180 @@
+.gallery-page {
+  padding: 24px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--mc-darker) 0%, #1a1a30 100%);
+}
+
+.gallery-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 3px solid var(--mc-dark-brown);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.gallery-title {
+  font-size: 1rem;
+  color: var(--mc-gold);
+  text-shadow: 2px 2px 0 var(--mc-dark-brown);
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  border: 2px solid rgba(255,255,255,0.05);
+}
+
+.tab-btn {
+  font-family: var(--font-mc);
+  font-size: 0.55rem;
+  padding: 10px 16px;
+  background: var(--mc-brown);
+  color: var(--mc-light);
+  border: 3px solid var(--mc-dark-brown);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.tab-btn:hover {
+  background: var(--mc-dark-brown);
+  transform: translateY(-2px);
+}
+
+.tab-btn.active {
+  background: linear-gradient(180deg, #5cb85c, #3d8b40);
+  border-color: var(--mc-dark-green);
+  box-shadow: 0 0 12px rgba(76, 175, 80, 0.4);
+  transform: translateY(-2px);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+  padding: 8px;
+}
+
+.card-thumb {
+  position: relative;
+  aspect-ratio: 1;
+  border: 4px solid var(--mc-brown);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.25s;
+  background: var(--mc-dark-brown);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card-thumb:hover {
+  transform: translateY(-6px) scale(1.03);
+  border-color: var(--mc-gold);
+  box-shadow: 0 8px 24px rgba(255, 215, 0, 0.3);
+}
+
+.card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+
+.card-thumb .card-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 8px 6px;
+  font-size: 0.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--mc-stone);
+  font-size: 0.7rem;
+  line-height: 2.5;
+}
+
+@media (max-width: 768px) {
+  #page-gallery {
+    padding: 12px;
+  }
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 12px;
+  }
+  .gallery-title {
+    font-size: 0.7rem;
+  }
+  .tabs {
+    gap: 6px;
+    padding: 8px;
+  }
+  .tab-btn {
+    font-size: 0.45rem;
+    padding: 8px 10px;
+  }
+}
+
+.card-locked {
+  cursor: not-allowed;
+  opacity: 0.7;
+  position: relative;
+}
+
+.card-locked:hover {
+  transform: none;
+  border-color: var(--mc-brown);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card-locked-icon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-family: var(--font-mc);
+  color: var(--mc-stone);
+  background: linear-gradient(180deg, #3a3a3a, #2a2a2a);
+}
+
+.card-lock-overlay {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 1.2rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.lock-icon {
+  animation: lockBounce 2s ease-in-out infinite;
+}
+
+@keyframes lockBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}

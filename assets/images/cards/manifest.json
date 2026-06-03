@@ -1,0 +1,661 @@
+{
+  "01-block": [
+    {
+      "id": "001",
+      "word": "Block",
+      "image": "001-Block.png"
+    },
+    {
+      "id": "002",
+      "word": "Stone",
+      "image": "002-Stone.png"
+    },
+    {
+      "id": "003",
+      "word": "Grass Block",
+      "image": "003-Grass Block.png"
+    },
+    {
+      "id": "004",
+      "word": "Dirt",
+      "image": "004-Dirt.png"
+    },
+    {
+      "id": "005",
+      "word": "Cobblestone",
+      "image": "005-Cobblestone.png"
+    },
+    {
+      "id": "006",
+      "word": "Sand",
+      "image": "006-Sand.png"
+    },
+    {
+      "id": "007",
+      "word": "Gravel",
+      "image": "007-Gravel.png"
+    },
+    {
+      "id": "008",
+      "word": "Clay",
+      "image": "008-Clay.png"
+    },
+    {
+      "id": "009",
+      "word": "Snow Block",
+      "image": "009-Snow Block.png"
+    },
+    {
+      "id": "010",
+      "word": "Ice",
+      "image": "010-Ice.png"
+    },
+    {
+      "id": "011",
+      "word": "Glass",
+      "image": "011-Glass.png"
+    },
+    {
+      "id": "012",
+      "word": "Wood Planks",
+      "image": "012-Wood Planks .png"
+    },
+    {
+      "id": "013",
+      "word": "Oak Log",
+      "image": "013-Oak Log.png"
+    },
+    {
+      "id": "014",
+      "word": "Brick Block",
+      "image": "014-Brick Block.png"
+    },
+    {
+      "id": "015",
+      "word": "Bookshelf",
+      "image": "015-Bookshelf.png"
+    },
+    {
+      "id": "016",
+      "word": "Obsidian",
+      "image": "016-Obsidian.png"
+    },
+    {
+      "id": "017",
+      "word": "Wool",
+      "image": "017-Wool.png"
+    },
+    {
+      "id": "018",
+      "word": "Chest",
+      "image": "018-Chest.png"
+    },
+    {
+      "id": "019",
+      "word": "Crafting Table",
+      "image": "019-Crafting Table.png"
+    },
+    {
+      "id": "020",
+      "word": "Furnace",
+      "image": "020-Furnace.png"
+    },
+    {
+      "id": "021",
+      "word": "Door",
+      "image": "021-Door.png"
+    },
+    {
+      "id": "022",
+      "word": "Ladder",
+      "image": "022-Ladder.png"
+    },
+    {
+      "id": "023",
+      "word": "Fence",
+      "image": "023-Fence.png"
+    },
+    {
+      "id": "024",
+      "word": "Torch",
+      "image": "024-Torch.png"
+    },
+    {
+      "id": "025",
+      "word": "Bed",
+      "image": "025-Bed.png"
+    }
+  ],
+  "02-tool": [
+    {
+      "id": "001",
+      "word": "Tool",
+      "image": "001-Tool.png"
+    },
+    {
+      "id": "002",
+      "word": "Pickaxe",
+      "image": "002-Pickaxe.png"
+    },
+    {
+      "id": "003",
+      "word": "Axe",
+      "image": "003-Axe.png"
+    },
+    {
+      "id": "004",
+      "word": "Shovel",
+      "image": "004-Shovel.png"
+    },
+    {
+      "id": "005",
+      "word": "Hoe",
+      "image": "005-Hoe.png"
+    },
+    {
+      "id": "006",
+      "word": "Shears",
+      "image": "006-Shears.png"
+    },
+    {
+      "id": "007",
+      "word": "Fishing Rod",
+      "image": "007-Fishing Rod.png"
+    },
+    {
+      "id": "008",
+      "word": "Flint and Steel",
+      "image": "008-Flint and Steel.png"
+    },
+    {
+      "id": "009",
+      "word": "Bucket",
+      "image": "009-Bucket.png"
+    },
+    {
+      "id": "010",
+      "word": "Water Bucket",
+      "image": "010-Water Bucket.png"
+    },
+    {
+      "id": "011",
+      "word": "Lava Bucket",
+      "image": "011-Lava Bucket.png"
+    },
+    {
+      "id": "012",
+      "word": "Milk Bucket",
+      "image": "012-Milk Bucket.png"
+    },
+    {
+      "id": "013",
+      "word": "Compass",
+      "image": "013-Compass.png"
+    },
+    {
+      "id": "014",
+      "word": "Clock",
+      "image": "014-Clock.png"
+    },
+    {
+      "id": "015",
+      "word": "Map",
+      "image": "015-Map.png"
+    },
+    {
+      "id": "016",
+      "word": "Spyglass",
+      "image": "016-Spyglass.png"
+    },
+    {
+      "id": "017",
+      "word": "Brush",
+      "image": "017-Brush.png"
+    },
+    {
+      "id": "018",
+      "word": "Lead",
+      "image": "018-Lead.png"
+    },
+    {
+      "id": "019",
+      "word": "Name Tag",
+      "image": "019-Name Tag .png"
+    },
+    {
+      "id": "020",
+      "word": "Saddle",
+      "image": "020-Saddle.png"
+    }
+  ],
+  "03-weapon": [
+    {
+      "id": "001",
+      "word": "Weapon",
+      "image": "001-Weapon.png"
+    },
+    {
+      "id": "002",
+      "word": "Sword",
+      "image": "002-Sword.png"
+    },
+    {
+      "id": "003",
+      "word": "Wooden Sword",
+      "image": "003-Wooden Sword.png"
+    },
+    {
+      "id": "004",
+      "word": "Stone Sword",
+      "image": "004-Stone Sword.png"
+    },
+    {
+      "id": "005",
+      "word": "Iron Sword",
+      "image": "005-Iron Sword.png"
+    },
+    {
+      "id": "006",
+      "word": "Golden Sword",
+      "image": "006-Golden Sword.png"
+    },
+    {
+      "id": "007",
+      "word": "Diamond Sword",
+      "image": "007-Diamond Sword.png"
+    },
+    {
+      "id": "008",
+      "word": "Netherite Sword",
+      "image": "008-Netherite Sword.png"
+    },
+    {
+      "id": "009",
+      "word": "Bow",
+      "image": "009-Bow.png"
+    },
+    {
+      "id": "010",
+      "word": "Arrow",
+      "image": "010-Arrow.png"
+    },
+    {
+      "id": "011",
+      "word": "Crossbow",
+      "image": "011-Crossbow.png"
+    },
+    {
+      "id": "012",
+      "word": "Trident",
+      "image": "012-Trident.png"
+    },
+    {
+      "id": "013",
+      "word": "Shield",
+      "image": "013-Shield.png"
+    },
+    {
+      "id": "014",
+      "word": "Mace",
+      "image": "014-Mace.png"
+    },
+    {
+      "id": "015",
+      "word": "Snowball",
+      "image": "015-Snowball.png"
+    },
+    {
+      "id": "016",
+      "word": "Egg",
+      "image": "016-Egg.png"
+    },
+    {
+      "id": "017",
+      "word": "Fire Charge",
+      "image": "017-Fire Charge.png"
+    },
+    {
+      "id": "018",
+      "word": "TNT",
+      "image": "018-TNT.png"
+    },
+    {
+      "id": "019",
+      "word": "Splash Potion",
+      "image": "019-Splash Potion.png"
+    },
+    {
+      "id": "020",
+      "word": "End Crystal",
+      "image": "020-End Crystal.png"
+    }
+  ],
+  "04-food": [
+    {
+      "id": "001",
+      "word": "Food",
+      "image": "001-Food.png"
+    },
+    {
+      "id": "002",
+      "word": "Apple",
+      "image": "002-Apple.png"
+    },
+    {
+      "id": "003",
+      "word": "Golden Apple",
+      "image": "003-Golden Apple.png"
+    },
+    {
+      "id": "004",
+      "word": "Bread",
+      "image": "004-Bread.png"
+    },
+    {
+      "id": "005",
+      "word": "Cookie",
+      "image": "005-Cookie.png"
+    },
+    {
+      "id": "006",
+      "word": "Cake",
+      "image": "006-Cake.png"
+    },
+    {
+      "id": "007",
+      "word": "Carrot",
+      "image": "007-Carrot.png"
+    },
+    {
+      "id": "008",
+      "word": "Golden Carrot",
+      "image": "008-Golden Carrot.png"
+    },
+    {
+      "id": "009",
+      "word": "Potato",
+      "image": "009-Potato.png"
+    },
+    {
+      "id": "010",
+      "word": "Baked Potato",
+      "image": "010-Baked Potato.png"
+    },
+    {
+      "id": "011",
+      "word": "Beetroot",
+      "image": "011-Beetroot.png"
+    },
+    {
+      "id": "012",
+      "word": "Melon Slice",
+      "image": "012-Melon Slice.png"
+    },
+    {
+      "id": "013",
+      "word": "Sweet Berries",
+      "image": "013-Sweet Berries.png"
+    },
+    {
+      "id": "014",
+      "word": "Glow Berries",
+      "image": "014-Glow Berries.png"
+    },
+    {
+      "id": "015",
+      "word": "Pumpkin Pie",
+      "image": "015-Pumpkin Pie.png"
+    },
+    {
+      "id": "016",
+      "word": "Mushroom Stew",
+      "image": "016-Mushroom Stew.png"
+    },
+    {
+      "id": "017",
+      "word": "Steak",
+      "image": "017-Steak.png"
+    },
+    {
+      "id": "018",
+      "word": "Cooked Porkchop",
+      "image": "018-Cooked Porkchop.png"
+    },
+    {
+      "id": "019",
+      "word": "Cooked Chicken",
+      "image": "019-Cooked Chicken.png"
+    },
+    {
+      "id": "020",
+      "word": "Cooked Cod",
+      "image": "020-Cooked Cod.png"
+    },
+    {
+      "id": "021",
+      "word": "Cooked Salmon",
+      "image": "021-Cooked Salmon.png"
+    },
+    {
+      "id": "022",
+      "word": "Honey Bottle",
+      "image": "022-Honey Bottle.png"
+    },
+    {
+      "id": "023",
+      "word": "Dried Kelp",
+      "image": "023-Dried Kelp.png"
+    }
+  ],
+  "05-ore": [
+    {
+      "id": "001",
+      "word": "Ore",
+      "image": "001-Ore.png"
+    },
+    {
+      "id": "002",
+      "word": "Coal Ore",
+      "image": "002-Coal Ore.png"
+    },
+    {
+      "id": "003",
+      "word": "Iron Ore",
+      "image": "003-Iron Ore.png"
+    },
+    {
+      "id": "004",
+      "word": "Copper Ore",
+      "image": "004-Copper Ore.png"
+    },
+    {
+      "id": "005",
+      "word": "Gold Ore",
+      "image": "005-Gold Ore.png"
+    },
+    {
+      "id": "006",
+      "word": "Redstone Ore",
+      "image": "006-Redstone Ore.png"
+    },
+    {
+      "id": "007",
+      "word": "Lapis Lazuli Ore",
+      "image": "007-Lapis Lazuli Ore.png"
+    },
+    {
+      "id": "008",
+      "word": "Diamond Ore",
+      "image": "008-Diamond Ore.png"
+    },
+    {
+      "id": "009",
+      "word": "Emerald Ore",
+      "image": "009-Emerald Ore.png"
+    },
+    {
+      "id": "010",
+      "word": "Nether Gold Ore",
+      "image": "010-Nether Gold Ore.png"
+    },
+    {
+      "id": "011",
+      "word": "Nether Quartz Ore",
+      "image": "011-Nether Quartz Ore.png"
+    },
+    {
+      "id": "012",
+      "word": "Coal",
+      "image": "012-Coal.png"
+    },
+    {
+      "id": "013",
+      "word": "Iron Ingot",
+      "image": "013-Iron Ingot.png"
+    },
+    {
+      "id": "014",
+      "word": "Copper Ingot",
+      "image": "014-Copper Ingot.png"
+    },
+    {
+      "id": "015",
+      "word": "Gold Ingot",
+      "image": "015-Gold Ingot.png"
+    },
+    {
+      "id": "016",
+      "word": "Diamond",
+      "image": "016-Diamond.png"
+    },
+    {
+      "id": "017",
+      "word": "Emerald",
+      "image": "017-Emerald.png"
+    },
+    {
+      "id": "018",
+      "word": "Redstone Dust",
+      "image": "018-Redstone Dust.png"
+    },
+    {
+      "id": "019",
+      "word": "Lapis Lazuli",
+      "image": "019-Lapis Lazuli.png"
+    },
+    {
+      "id": "020",
+      "word": "Netherite Ingot",
+      "image": "020-Netherite Ingot.png"
+    }
+  ],
+  "06-armor": [
+    {
+      "id": "001",
+      "word": "Armor",
+      "image": "001-Armor.png"
+    },
+    {
+      "id": "002",
+      "word": "Helmet",
+      "image": "002-Helmet.png"
+    },
+    {
+      "id": "003",
+      "word": "Chestplate",
+      "image": "003-Chestplate.png"
+    },
+    {
+      "id": "004",
+      "word": "Leggings",
+      "image": "004-Leggings.png"
+    },
+    {
+      "id": "005",
+      "word": "Boots",
+      "image": "005-Boots.png"
+    },
+    {
+      "id": "006",
+      "word": "Leather Helmet",
+      "image": "006-Leather Helmet.png"
+    },
+    {
+      "id": "007",
+      "word": "Iron Helmet",
+      "image": "007-Iron Helmet.png"
+    },
+    {
+      "id": "008",
+      "word": "Iron Chestplate",
+      "image": "008-Iron Chestplate.png"
+    },
+    {
+      "id": "009",
+      "word": "Iron Leggings",
+      "image": "009-Iron Leggings.png"
+    },
+    {
+      "id": "010",
+      "word": "Iron Boots",
+      "image": "010-Iron Boots.png"
+    },
+    {
+      "id": "011",
+      "word": "Golden Helmet",
+      "image": "011-Golden Helmet.png"
+    },
+    {
+      "id": "012",
+      "word": "Diamond Helmet",
+      "image": "012-Diamond Helmet.png"
+    },
+    {
+      "id": "013",
+      "word": "Diamond Chestplate",
+      "image": "013-Diamond Chestplate.png"
+    },
+    {
+      "id": "014",
+      "word": "Diamond Leggings",
+      "image": "014-Diamond Leggings.png"
+    },
+    {
+      "id": "015",
+      "word": "Diamond Boots",
+      "image": "015-Diamond Boots.png"
+    },
+    {
+      "id": "016",
+      "word": "Netherite Helmet",
+      "image": "016-Netherite Helmet.png"
+    },
+    {
+      "id": "017",
+      "word": "Netherite Chestplate",
+      "image": "017-Netherite Chestplate.png"
+    },
+    {
+      "id": "018",
+      "word": "Netherite Boots",
+      "image": "018-Netherite Boots.png"
+    },
+    {
+      "id": "019",
+      "word": "Turtle Shell",
+      "image": "019-Turtle Shell.png"
+    },
+    {
+      "id": "020",
+      "word": "Elytra",
+      "image": "020-Elytra.png"
+    },
+    {
+      "id": "021",
+      "word": "Horse Armor",
+      "image": "021-Horse Armor.png"
+    }
+  ],
+  "07-redstone": [],
+  "08-spawn-egg": []
+}

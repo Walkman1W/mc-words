@@ -1,0 +1,9 @@
+{
+  "name": "minecraft-word-cards",
+  "version": "1.0.0",
+  "description": "Learn English words through Minecraft cards",
+  "scripts": {
+    "build": "node generate-manifest.js",
+    "start": "node server.js"
+  }
+}

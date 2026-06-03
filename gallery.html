@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minecraft Word Cards - Gallery</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/game.css">
+  <link rel="stylesheet" href="css/timer.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Gallery Page -->
+  <div class="gallery-page">
+    <header class="gallery-header">
+      <div class="header-left">
+        <a href="index.html" class="mc-btn mc-btn-sm">← Home</a>
+        <h1 class="gallery-title">Word Cards</h1>
+      </div>
+      <div class="header-right">
+        <span id="user-display" class="user-display"></span>
+        <button id="btn-leaderboard" class="mc-btn mc-btn-sm">🏆 Rank</button>
+        <button id="btn-logout" class="mc-btn mc-btn-sm btn-logout">Logout</button>
+      </div>
+    </header>
+    <nav id="tabs" class="tabs"></nav>
+    <div id="category-stats" class="category-stats"></div>
+    <main id="card-grid" class="card-grid"></main>
+  </div>
+
+  <!-- Spelling Game Modal -->
+  <div id="game-modal" class="modal hidden">
+    <div class="modal-content">
+      <button id="btn-close-modal" class="btn-close">✕</button>
+      <div id="game-area" class="game-area">
+        <div class="game-top-bar">
+          <div id="card-timer" class="card-timer">
+            <span class="timer-icon">⏱</span>
+            <span id="card-timer-display">15s</span>
+          </div>
+        </div>
+        <div id="game-thumbnail" class="game-thumbnail">
+          <img id="game-thumb-img" src="" alt="">
+        </div>
+        <div id="game-word-display" class="game-word-display"></div>
+        <div id="game-drop-zone" class="game-drop-zone">
+          <span class="drop-hint">Drop letters here</span>
+        </div>
+        <div id="game-letter-pool" class="game-letter-pool"></div>
+        <div id="game-feedback" class="game-feedback"></div>
+        <div id="game-attempts" class="game-attempts"></div>
+      </div>
+      <div id="game-result" class="game-result hidden">
+        <img id="result-image" class="result-image" src="" alt="">
+        <p id="result-word" class="result-word"></p>
+        <button id="btn-back-gallery" class="mc-btn mc-btn-sm">← Back to Cards</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaderboard Modal -->
+  <div id="leaderboard-modal" class="modal hidden">
+    <div class="modal-content leaderboard-content">
+      <button id="btn-close-leaderboard" class="btn-close">✕</button>
+      <h2 class="leaderboard-title">🏆 Leaderboard</h2>
+      <div id="leaderboard-category" class="leaderboard-category"></div>
+      <div id="leaderboard-list" class="leaderboard-list"></div>
+    </div>
+  </div>
+
+  <script type="module" src="js/gallery-app.js"></script>
+</body>
+</html>

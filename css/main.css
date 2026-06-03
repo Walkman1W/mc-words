@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --mc-green: #4CAF50;
+  --mc-dark-green: #2E7D32;
+  --mc-brown: #795548;
+  --mc-dark-brown: #4E342E;
+  --mc-stone: #9E9E9E;
+  --mc-dark: #1a1a2e;
+  --mc-darker: #0f0f1a;
+  --mc-light: #f0f0f0;
+  --mc-gold: #FFD700;
+  --mc-blue: #42A5F5;
+  --font-mc: 'Press Start 2P', cursive;
+}
+
+body {
+  font-family: var(--font-mc);
+  background: var(--mc-darker);
+  color: var(--mc-light);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.page {
+  display: none;
+  min-height: 100vh;
+}
+
+.page.active {
+  display: block;
+}
+
+.mc-btn {
+  font-family: var(--font-mc);
+  font-size: 0.85rem;
+  padding: 16px 32px;
+  background: linear-gradient(180deg, #5cb85c 0%, #4CAF50 50%, #3d8b40 100%);
+  color: white;
+  border: 4px solid var(--mc-dark-green);
+  border-bottom-width: 6px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.15s;
+  image-rendering: pixelated;
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.mc-btn:hover {
+  background: linear-gradient(180deg, #4CAF50 0%, #3d8b40 50%, #2E7D32 100%);
+  transform: translateY(2px);
+  border-bottom-width: 4px;
+}
+
+.mc-btn:active {
+  transform: translateY(4px);
+  border-bottom-width: 2px;
+}
+
+.mc-btn-sm {
+  font-size: 0.6rem;
+  padding: 8px 16px;
+  border-width: 3px;
+  border-bottom-width: 4px;
+}
+
+.mc-btn-sm:hover {
+  border-bottom-width: 3px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+::selection {
+  background: var(--mc-gold);
+  color: var(--mc-dark);
+}

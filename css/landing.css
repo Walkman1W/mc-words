@@ -1,0 +1,215 @@
+.landing-page {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.landing-bg {
+  position: absolute;
+  inset: 0;
+  background: url('../assets/images/bg/bg.png') center/cover no-repeat,
+              linear-gradient(180deg, #87CEEB 0%, #87CEEB 55%, #4a7c3f 55%, #2d5a27 100%);
+  z-index: 0;
+  animation: bgZoom 20s ease-in-out infinite alternate;
+}
+
+@keyframes bgZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+.landing-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
+  z-index: 1;
+}
+
+.landing-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 60px 20px 40px;
+  animation: fadeInUp 0.8s ease;
+}
+
+.landing-top-title {
+  margin-bottom: 40px;
+}
+
+.landing-logo {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.landing-logo span {
+  font-size: 3.5rem;
+  font-family: var(--font-mc);
+  display: inline-block;
+  animation: letterFloat 2s ease-in-out infinite;
+  text-shadow:
+    4px 4px 0 var(--mc-dark-brown),
+    6px 6px 0 rgba(0,0,0,0.3);
+}
+
+.logo-m { color: #4CAF50; animation-delay: 0s; }
+.logo-i { color: #8BC34A; animation-delay: 0.1s; }
+.logo-n { color: #CDDC39; animation-delay: 0.2s; }
+.logo-e { color: #FFD700; animation-delay: 0.3s; }
+.logo-c { color: #FF9800; animation-delay: 0.4s; }
+.logo-r { color: #FF5722; animation-delay: 0.5s; }
+.logo-a { color: #E91E63; animation-delay: 0.6s; }
+.logo-f { color: #9C27B0; animation-delay: 0.7s; }
+.logo-t { color: #42A5F5; animation-delay: 0.8s; }
+
+@keyframes letterFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.mc-subtitle {
+  font-size: 1.3rem;
+  color: var(--mc-light);
+  margin-bottom: 16px;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+  letter-spacing: 3px;
+}
+
+.landing-desc {
+  font-family: sans-serif;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.landing-login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 36px;
+  padding: 24px 32px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.login-label {
+  font-family: var(--font-mc);
+  font-size: 0.6rem;
+  color: var(--mc-gold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.mc-input {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: var(--font-mc);
+  font-size: 0.7rem;
+  background: rgba(0, 0, 0, 0.6);
+  border: 3px solid var(--mc-brown);
+  border-radius: 6px;
+  color: var(--mc-light);
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.mc-input:focus {
+  border-color: var(--mc-gold);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+}
+
+.mc-input.input-error {
+  border-color: #ef5350;
+  animation: shake 0.3s ease;
+}
+
+.login-error {
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  color: #ef5350;
+  text-shadow: 0 0 4px rgba(239, 83, 80, 0.4);
+}
+
+.btn-icon {
+  margin-right: 8px;
+}
+
+.landing-hint {
+  margin-top: 24px;
+  font-size: 0.5rem;
+  color: rgba(255,255,255,0.4);
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.landing-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(2px 2px at 100px 150px, rgba(255,255,255,0.3), transparent),
+    radial-gradient(2px 2px at 400px 300px, rgba(255,255,255,0.2), transparent),
+    radial-gradient(2px 2px at 700px 200px, rgba(255,255,255,0.3), transparent),
+    radial-gradient(2px 2px at 900px 400px, rgba(255,255,255,0.2), transparent),
+    radial-gradient(2px 2px at 1200px 100px, rgba(255,255,255,0.3), transparent),
+    radial-gradient(2px 2px at 300px 500px, rgba(255,255,255,0.15), transparent),
+    radial-gradient(2px 2px at 600px 600px, rgba(255,255,255,0.2), transparent),
+    radial-gradient(2px 2px at 1000px 350px, rgba(255,255,255,0.25), transparent);
+  animation: particleDrift 8s linear infinite;
+}
+
+@keyframes particleDrift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-20px); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@media (max-width: 768px) {
+  .landing-logo span {
+    font-size: 2rem;
+  }
+  .mc-subtitle {
+    font-size: 0.8rem;
+  }
+  .landing-desc {
+    font-size: 0.8rem;
+  }
+  .landing-login-box {
+    padding: 20px 20px;
+    max-width: 300px;
+  }
+}

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <rect width="64" height="64" fill="#4a7c3f"/>
+      <rect x="0" y="0" width="32" height="32" fill="#3d6b34"/>
+      <rect x="32" y="32" width="32" height="32" fill="#3d6b34"/>
+    </pattern>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB"/>
+      <stop offset="60%" style="stop-color:#87CEEB"/>
+      <stop offset="60%" style="stop-color:#4a7c3f"/>
+      <stop offset="100%" style="stop-color:#2d5a27"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <rect y="648" width="1920" height="432" fill="url(#grid)"/>
+  <!-- Trees -->
+  <rect x="200" y="500" width="40" height="148" fill="#8B4513"/>
+  <rect x="160" y="400" width="120" height="120" fill="#228B22"/>
+  <rect x="600" y="520" width="40" height="128" fill="#8B4513"/>
+  <rect x="560" y="420" width="120" height="120" fill="#228B22"/>
+  <rect x="1400" y="480" width="40" height="168" fill="#8B4513"/>
+  <rect x="1360" y="380" width="120" height="120" fill="#228B22"/>
+  <rect x="1700" y="540" width="40" height="108" fill="#8B4513"/>
+  <rect x="1660" y="440" width="120" height="120" fill="#228B22"/>
+  <!-- Sun -->
+  <rect x="1600" y="80" width="120" height="120" fill="#FFD700"/>
+  <!-- Clouds -->
+  <rect x="300" y="100" width="200" height="60" fill="white" opacity="0.8"/>
+  <rect x="280" y="120" width="240" height="40" fill="white" opacity="0.8"/>
+  <rect x="800" y="150" width="160" height="50" fill="white" opacity="0.7"/>
+  <rect x="780" y="170" width="200" height="30" fill="white" opacity="0.7"/>
+</svg>

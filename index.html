@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minecraft Word Cards</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/landing.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="landing-page">
+    <div class="landing-bg"></div>
+    <div class="landing-overlay"></div>
+    <div class="landing-content">
+      <div class="landing-top-title">
+        <div class="landing-logo">
+          <span class="logo-m">M</span><span class="logo-i">I</span><span class="logo-n">N</span><span class="logo-e">E</span><span class="logo-c">C</span><span class="logo-r">R</span><span class="logo-a">A</span><span class="logo-f">F</span><span class="logo-t">T</span>
+        </div>
+        <h2 class="mc-subtitle">~ Word Cards ~</h2>
+        <p class="landing-desc">Learn English words through Minecraft!</p>
+      </div>
+      <div class="landing-login-box">
+        <label class="login-label" for="username-input">Enter your name</label>
+        <input type="text" id="username-input" class="mc-input" placeholder="Player name..." maxlength="16" autocomplete="off">
+        <p id="login-error" class="login-error hidden"></p>
+      </div>
+      <button id="btn-start" class="mc-btn">
+        <span class="btn-icon">▶</span> Start
+      </button>
+      <div class="landing-hint">Enter a name and click Start</div>
+    </div>
+    <div class="landing-particles"></div>
+  </div>
+  <script type="module" src="js/landing-app.js"></script>
+</body>
+</html>
