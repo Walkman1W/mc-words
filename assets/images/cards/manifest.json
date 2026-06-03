@@ -656,6 +656,258 @@
       "image": "021-Horse Armor.png"
     }
   ],
-  "07-redstone": [],
-  "08-spawn-egg": []
+  "07-redstone": [
+    {
+      "id": "001",
+      "word": "Redstone",
+      "image": "001-Redstone.png"
+    },
+    {
+      "id": "002",
+      "word": "Redstone Dust",
+      "image": "002-Redstone Dust.png"
+    },
+    {
+      "id": "003",
+      "word": "Redstone Torch",
+      "image": "003-Redstone Torch.png"
+    },
+    {
+      "id": "004",
+      "word": "Redstone Block",
+      "image": "004-Redstone Block.png"
+    },
+    {
+      "id": "005",
+      "word": "Lever",
+      "image": "005-Lever.png"
+    },
+    {
+      "id": "006",
+      "word": "Button",
+      "image": "006-Button.png"
+    },
+    {
+      "id": "007",
+      "word": "Pressure Plate",
+      "image": "007-Pressure Plate.png"
+    },
+    {
+      "id": "008",
+      "word": "Tripwire Hook",
+      "image": "008-Tripwire Hook.png"
+    },
+    {
+      "id": "009",
+      "word": "Detector Rail",
+      "image": "009-Detector Rail.png"
+    },
+    {
+      "id": "010",
+      "word": "Powered Rail",
+      "image": "010-Powered Rail.png"
+    },
+    {
+      "id": "011",
+      "word": "Activator Rail",
+      "image": "011-Activator Rail.png"
+    },
+    {
+      "id": "012",
+      "word": "Piston",
+      "image": "012-Piston.png"
+    },
+    {
+      "id": "013",
+      "word": "Sticky Piston",
+      "image": "013-Sticky Piston.png"
+    },
+    {
+      "id": "014",
+      "word": "Dispenser",
+      "image": "014-Dispenser.png"
+    },
+    {
+      "id": "015",
+      "word": "Dropper",
+      "image": "015-Dropper.png"
+    },
+    {
+      "id": "016",
+      "word": "Hopper",
+      "image": "016-Hopper.png"
+    },
+    {
+      "id": "017",
+      "word": "Observer",
+      "image": "017-Observer.png"
+    },
+    {
+      "id": "018",
+      "word": "Repeater",
+      "image": "018-Repeater.png"
+    },
+    {
+      "id": "019",
+      "word": "Comparator",
+      "image": "019-Comparator.png"
+    },
+    {
+      "id": "020",
+      "word": "Target Block",
+      "image": "020-Target Block.png"
+    }
+  ],
+  "08-spawn-egg": [
+    {
+      "id": "001",
+      "word": "Spawn Egg",
+      "image": "001-Spawn Egg.png"
+    },
+    {
+      "id": "002",
+      "word": "Creeper Spawn Egg",
+      "image": "002-Creeper Spawn Egg.png"
+    },
+    {
+      "id": "003",
+      "word": "Zombie Spawn Egg",
+      "image": "003-Zombie Spawn Egg.png"
+    },
+    {
+      "id": "004",
+      "word": "Skeleton Spawn Egg",
+      "image": "004-Skeleton Spawn Egg.png"
+    },
+    {
+      "id": "005",
+      "word": "Spider Spawn Egg",
+      "image": "005-Spider Spawn Egg.png"
+    },
+    {
+      "id": "006",
+      "word": "Enderman Spawn Egg",
+      "image": "006-Enderman Spawn Egg.png"
+    },
+    {
+      "id": "007",
+      "word": "Witch Spawn Egg",
+      "image": "007-Witch Spawn Egg.png"
+    },
+    {
+      "id": "008",
+      "word": "Slime Spawn Egg",
+      "image": "008-Slime Spawn Egg.png"
+    },
+    {
+      "id": "009",
+      "word": "Ghast Spawn Egg",
+      "image": "009-Ghast Spawn Egg.png"
+    },
+    {
+      "id": "010",
+      "word": "Blaze Spawn Egg",
+      "image": "010-Blaze Spawn Egg.png"
+    },
+    {
+      "id": "011",
+      "word": "Magma Cube Spawn Egg",
+      "image": "011-Magma Cube Spawn Egg.png"
+    },
+    {
+      "id": "012",
+      "word": "Wither Skeleton Spawn Egg",
+      "image": "012-Wither Skeleton Spawn Egg.png"
+    },
+    {
+      "id": "013",
+      "word": "Drowned Spawn Egg",
+      "image": "013-Drowned Spawn Egg.png"
+    },
+    {
+      "id": "014",
+      "word": "Phantom Spawn Egg",
+      "image": "014-Phantom Spawn Egg.png"
+    },
+    {
+      "id": "015",
+      "word": "Pillager Spawn Egg",
+      "image": "015-Pillager Spawn Egg.png"
+    },
+    {
+      "id": "016",
+      "word": "Ravager Spawn Egg",
+      "image": "016-Ravager Spawn Egg.png"
+    },
+    {
+      "id": "017",
+      "word": "Warden Spawn Egg",
+      "image": "017-Warden Spawn Egg.png"
+    },
+    {
+      "id": "018",
+      "word": "Cow Spawn Egg",
+      "image": "018-Cow Spawn Egg.png"
+    },
+    {
+      "id": "019",
+      "word": "Pig Spawn Egg",
+      "image": "019-Pig Spawn Egg.png"
+    },
+    {
+      "id": "020",
+      "word": "Sheep Spawn Egg",
+      "image": "020-Sheep Spawn Egg.png"
+    },
+    {
+      "id": "021",
+      "word": "Chicken Spawn Egg",
+      "image": "021-Chicken Spawn Egg.png"
+    },
+    {
+      "id": "022",
+      "word": "Horse Spawn Egg",
+      "image": "022-Horse Spawn Egg.png"
+    },
+    {
+      "id": "023",
+      "word": "Wolf Spawn Egg",
+      "image": "023-Wolf Spawn Egg.png"
+    },
+    {
+      "id": "024",
+      "word": "Cat Spawn Egg",
+      "image": "024-Cat Spawn Egg.png"
+    },
+    {
+      "id": "025",
+      "word": "Villager Spawn Egg",
+      "image": "025-Villager Spawn Egg.png"
+    },
+    {
+      "id": "026",
+      "word": "Iron Golem Spawn Egg",
+      "image": "026-Iron Golem Spawn Egg.png"
+    },
+    {
+      "id": "027",
+      "word": "Bee Spawn Egg",
+      "image": "027-Bee Spawn Egg.png"
+    },
+    {
+      "id": "028",
+      "word": "Frog Spawn Egg",
+      "image": "028-Frog Spawn Egg.png"
+    },
+    {
+      "id": "029",
+      "word": "Camel Spawn Egg",
+      "image": "029-Camel Spawn Egg.png"
+    },
+    {
+      "id": "030",
+      "word": "Axolotl Spawn Egg",
+      "image": "030-Axolotl Spawn Egg.png"
+    }
+  ]
 }
