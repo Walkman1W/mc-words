@@ -1,7 +1,7 @@
 import { getCategories, getCurrentCategory, setCurrentCategory } from './categories.js';
 import { getCardsForCategory, getCardImagePath } from './cardData.js';
-import { openGame } from './game.js';
-import { getCategoryTime, getLeaderboard, getPlayerRank, formatTimeMs } from './timer.js';
+import { openGame, openPreview } from './game.js';
+import { getCategoryTime, getLeaderboard, getPlayerRank, formatTimeMs, getCardTime } from './timer.js';
 import { getConfig, isCardUnlocked, getFavorites } from './progress.js';
 
 let showingFavorites = false;
@@ -68,8 +68,11 @@ export function renderCards() {
     const imgPath = getCardImagePath(categoryId, card.image);
 
     if (unlocked) {
+      const cardTime = getCardTime(categoryId, card.id);
+      const timeLabel = cardTime ? `<div class="card-time">${formatTimeMs(cardTime)}</div>` : '';
       return `
         <div class="card-thumb" data-category="${categoryId}" data-index="${index}">
+          ${timeLabel}
           <img src="${imgPath}" alt="${card.word}" onerror="this.style.display='none'">
           <div class="card-label">${card.word}</div>
         </div>
@@ -127,8 +130,11 @@ function renderFavorites() {
     const imgPath = getCardImagePath(categoryId, card.image);
     const cards = getCardsForCategory(categoryId);
     const index = cards.findIndex(c => c.id === card.id);
+    const cardTime = getCardTime(categoryId, card.id);
+    const timeLabel = cardTime ? `<div class="card-time">${formatTimeMs(cardTime)}</div>` : '';
     return `
       <div class="card-thumb" data-category="${categoryId}" data-index="${index}">
+        ${timeLabel}
         <img src="${imgPath}" alt="${card.word}" onerror="this.style.display='none'">
         <div class="card-label">${card.word}</div>
       </div>
@@ -140,7 +146,7 @@ function renderFavorites() {
       const cat = thumb.dataset.category;
       const idx = parseInt(thumb.dataset.index);
       const cardInfo = getCardsForCategory(cat)[idx];
-      openGame(cardInfo, cat, idx);
+      openPreview(cardInfo, cat);
     });
   });
 }

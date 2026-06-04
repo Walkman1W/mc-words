@@ -98,6 +98,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 75% 8%;
+  transform: scale(1.8);
+  transform-origin: 75% 8%;
   image-rendering: pixelated;
 }
 
@@ -111,6 +114,21 @@
   font-size: 0.5rem;
   text-align: center;
   text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+.card-time {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 4px 6px;
+  font-family: var(--font-mc);
+  font-size: 0.45rem;
+  text-align: center;
+  color: var(--mc-gold);
   letter-spacing: 1px;
 }
 

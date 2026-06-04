@@ -4,6 +4,6 @@
     "showThumbnailOnLocked": false
   },
   "timer": {
-    "secondsPerLetter": 1
+    "secondsPerLetter": 3
   }
 }

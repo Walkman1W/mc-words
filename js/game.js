@@ -1,5 +1,5 @@
 import { getCardImagePath } from './cardData.js';
-import { startCardTimer, stopCardTimer, recordCardTime, formatTimeMs } from './timer.js';
+import { startCardTimer, stopCardTimer, recordCardTime, formatTimeMs, getCardTime } from './timer.js';
 import { markCardCompleted, getConfig, toggleFavorite, isFavorited } from './progress.js';
 
 let currentCard = null;
@@ -51,6 +51,7 @@ export function openGame(card, categoryId, cardIndex) {
   modal.classList.remove('hidden');
   gameArea.classList.remove('hidden');
   gameResult.classList.add('hidden');
+  document.body.style.overflow = 'hidden';
 
   setupSpellingGame();
   startCardTimer(card.id, categoryId, timeLimit);
@@ -61,6 +62,7 @@ function closeGame() {
   const modal = document.getElementById('game-modal');
   modal.classList.add('hidden');
   modal.querySelector('.modal-content').classList.remove('result-mode');
+  document.body.style.overflow = '';
   cleanupListeners();
   currentCard = null;
   currentCategoryId = null;
@@ -180,7 +182,7 @@ function setupDragAndDrop() {
 
   letterPool.addEventListener('click', (e) => {
     const tile = e.target.closest('.letter-tile');
-    if (!tile || tile.style.display === 'none') return;
+    if (!tile || tile.classList.contains('used')) return;
     placeTile(tile, dropZone);
   }, { signal: poolController.signal });
 }
@@ -198,14 +200,14 @@ function placeTile(sourceTile, dropZone) {
 
   clone.addEventListener('click', () => {
     clone.remove();
-    sourceTile.style.display = '';
+    sourceTile.classList.remove('used');
     if (!dropZone.querySelector('.letter-tile')) {
       dropZone.innerHTML = '<span class="drop-hint">Drop letters here</span>';
     }
   });
 
   dropZone.appendChild(clone);
-  sourceTile.style.display = 'none';
+  sourceTile.classList.add('used');
 
   checkAutoSubmit();
 }
@@ -288,7 +290,7 @@ function resetDropZone() {
 
   dropZone.innerHTML = '<span class="drop-hint">Drop letters here</span>';
   letterPool.querySelectorAll('.letter-tile').forEach(t => {
-    t.style.display = '';
+    t.classList.remove('used');
   });
 }
 
@@ -311,6 +313,12 @@ function showResult() {
   modalContent.classList.add('result-mode');
 
   resultWord.textContent = currentCard.word;
+
+  const cardTime = getCardTime(currentCategoryId, currentCard.id);
+  const timeEl = document.getElementById('result-time');
+  if (timeEl) {
+    timeEl.textContent = cardTime ? `⏱ ${formatTimeMs(cardTime)}` : '';
+  }
 
   const imgPath = getCardImagePath(currentCategoryId, currentCard.image);
   resultImage.src = imgPath;
@@ -343,6 +351,42 @@ function updateFavoriteButton() {
 
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
+
+export function openPreview(card, categoryId) {
+  currentCard = card;
+  currentCategoryId = categoryId;
+  currentCardIndex = null;
+
+  const modal = document.getElementById('game-modal');
+  const gameArea = document.getElementById('game-area');
+  const gameResult = document.getElementById('game-result');
+  const resultImage = document.getElementById('result-image');
+  const resultWord = document.getElementById('result-word');
+  const favoriteBtn = document.getElementById('btn-favorite');
+  const modalContent = modal.querySelector('.modal-content');
+
+  modal.classList.remove('hidden');
+  gameArea.classList.add('hidden');
+  gameResult.classList.remove('hidden');
+  modalContent.classList.add('result-mode');
+  document.body.style.overflow = 'hidden';
+
+  resultWord.textContent = card.word;
+
+  const imgPath = getCardImagePath(categoryId, card.image);
+  resultImage.src = imgPath;
+  resultImage.alt = card.word;
+  resultImage.classList.remove('hidden');
+
+  const cardTime = getCardTime(categoryId, card.id);
+  const timeEl = document.getElementById('result-time');
+  if (timeEl) {
+    timeEl.textContent = cardTime ? `⏱ ${formatTimeMs(cardTime)}` : '';
+  }
+
+  favoriteBtn.classList.remove('hidden');
+  updateFavoriteButton();
 }
 
 function shuffleArray(arr) {

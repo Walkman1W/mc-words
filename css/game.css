@@ -8,6 +8,8 @@
   justify-content: center;
   padding: 20px;
   animation: fadeIn 0.2s ease;
+  overscroll-behavior: contain;
+  touch-action: none;
 }
 
 @keyframes fadeIn {
@@ -26,6 +28,8 @@
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  overscroll-behavior: contain;
+  touch-action: pan-y;
 }
 
 .modal-content:has(.game-area:not(.hidden)) {
@@ -134,13 +138,13 @@
   align-items: center;
   justify-content: center;
   font-family: var(--font-mc);
-  font-size: 0.9rem;
+  font-size: 1rem;
   background: linear-gradient(180deg, #8d6e63, #6d4c41);
   color: var(--mc-light);
   border: 3px solid var(--mc-dark-brown);
   border-bottom-width: 5px;
   border-radius: 4px;
-  cursor: grab;
+  cursor: pointer;
   user-select: none;
   transition: all 0.15s;
   text-transform: lowercase;
@@ -155,6 +159,14 @@
 .letter-tile.dragging {
   opacity: 0.4;
   cursor: grabbing;
+}
+
+.letter-tile.used {
+  opacity: 0.25;
+  pointer-events: none;
+  transform: scale(0.9);
+  background: linear-gradient(180deg, #5a5a5a, #3a3a3a);
+  border-color: #333;
 }
 
 .letter-tile.placed {
@@ -265,10 +277,18 @@
 .result-word {
   font-size: 1.1rem;
   color: var(--mc-gold);
-  margin-bottom: 28px;
+  margin-bottom: 8px;
   text-transform: capitalize;
   letter-spacing: 4px;
   text-shadow: 2px 2px 0 var(--mc-dark-brown);
+}
+
+.result-time {
+  font-family: var(--font-mc);
+  font-size: 0.6rem;
+  color: var(--mc-green);
+  margin-bottom: 20px;
+  letter-spacing: 1px;
 }
 
 @keyframes pulse {
@@ -285,12 +305,16 @@
     padding: 20px 16px;
   }
   .letter-tile {
-    width: 36px;
-    height: 36px;
-    font-size: 0.7rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
   }
   .game-thumbnail img {
     width: 72px;
     height: 72px;
+  }
+  .game-letter-pool {
+    gap: 10px;
+    padding: 12px;
   }
 }

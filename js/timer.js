@@ -217,6 +217,12 @@ export function getPlayerRank(categoryId) {
   return { rank: idx + 1, time: playerTime };
 }
 
+export function getCardTime(categoryId, cardId) {
+  if (!cardRecords[categoryId]) return null;
+  const record = cardRecords[categoryId][cardId];
+  return record ? record.time : null;
+}
+
 export function isAutoRevealTriggered() {
   return autoRevealTimeout === null && cardTimerInterval === null && cardStartTime !== null;
 }
