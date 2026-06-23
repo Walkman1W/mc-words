@@ -132,19 +132,22 @@ function closeVideoModal() {
 
 // Initialize app
 async function init() {
-  // Check auth
-  const user = getCurrentUser();
-  if (!user) {
-    window.location.href = 'index.html';
-    return;
-  }
-
-  // Update user display
-  const userDisplay = document.getElementById('user-display');
-  if (userDisplay) userDisplay.textContent = user;
-
   // Init DOM elements
   initElements();
+
+  // Check auth (optional for video page)
+  const user = getCurrentUser();
+  const userDisplay = document.getElementById('user-display');
+  const logoutBtn = document.getElementById('btn-logout');
+
+  if (user) {
+    if (userDisplay) userDisplay.textContent = user;
+    if (logoutBtn) logoutBtn.addEventListener('click', logout);
+  } else {
+    // Hide user info if not logged in
+    if (userDisplay) userDisplay.classList.add('hidden');
+    if (logoutBtn) logoutBtn.classList.add('hidden');
+  }
 
   // Load video data
   await videoData.load();
@@ -154,7 +157,6 @@ async function init() {
   renderVideos();
 
   // Event listeners
-  document.getElementById('btn-logout')?.addEventListener('click', logout);
   document.getElementById('btn-close-video')?.addEventListener('click', closeVideoModal);
 
   // Close modal on background click
