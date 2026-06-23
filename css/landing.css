@@ -289,3 +289,30 @@
     max-width: 300px;
   }
 }
+
+/* Landing Links */
+.landing-links {
+  margin-top: 16px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.landing-link {
+  font-family: var(--font-mc);
+  font-size: 0.6rem;
+  color: var(--mc-light);
+  text-decoration: none;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.landing-link:hover {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: var(--mc-gold);
+  color: var(--mc-gold);
+}

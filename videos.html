@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minecraft Word Cards - Videos</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/videos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Videos Page -->
+  <div class="videos-page">
+    <header class="videos-header">
+      <div class="header-left">
+        <a href="index.html" class="mc-btn mc-btn-sm">← Home</a>
+        <h1 class="videos-title">Video Library</h1>
+      </div>
+      <div class="header-right">
+        <span id="user-display" class="user-display"></span>
+        <button id="btn-logout" class="mc-btn mc-btn-sm btn-logout">Logout</button>
+      </div>
+    </header>
+
+    <main class="videos-content">
+      <!-- 视频分类标签 -->
+      <div id="video-tabs" class="video-tabs"></div>
+
+      <!-- 视频网格 -->
+      <div id="video-grid" class="video-grid"></div>
+
+      <!-- 空状态提示 -->
+      <div id="empty-state" class="empty-state hidden">
+        <div class="empty-icon">📹</div>
+        <p class="empty-text">Videos coming soon!</p>
+        <p class="empty-hint">Check back later for Minecraft tutorials</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- Video Player Modal -->
+  <div id="video-modal" class="modal hidden">
+    <div class="modal-content video-modal-content">
+      <button id="btn-close-video" class="btn-close">✕</button>
+      <div class="video-player-wrapper">
+        <div id="video-player" class="video-player">
+          <!-- Bilibili iframe 或 video 标签将在这里 -->
+        </div>
+      </div>
+      <div class="video-info">
+        <h2 id="video-title" class="video-title"></h2>
+        <p id="video-description" class="video-description"></p>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/video-app.js"></script>
+</body>
+</html>

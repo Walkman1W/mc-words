@@ -1,0 +1,41 @@
+{
+  "videos": [
+    {
+      "id": "001",
+      "title": "Minecraft Basics Tutorial",
+      "bvid": "",
+      "file": "",
+      "thumbnail": "thumbnails/001.jpg",
+      "duration": "5:30",
+      "category": "tutorial",
+      "description": "Learn the basics of Minecraft gameplay"
+    },
+    {
+      "id": "002",
+      "title": "Building Your First House",
+      "bvid": "",
+      "file": "",
+      "thumbnail": "thumbnails/002.jpg",
+      "duration": "8:15",
+      "category": "build",
+      "description": "Step by step guide to building a house"
+    },
+    {
+      "id": "003",
+      "title": "Redstone Circuits 101",
+      "bvid": "",
+      "file": "",
+      "thumbnail": "thumbnails/003.jpg",
+      "duration": "12:45",
+      "category": "redstone",
+      "description": "Introduction to redstone mechanics"
+    }
+  ],
+  "categories": [
+    { "id": "all", "label": "All" },
+    { "id": "tutorial", "label": "Tutorials" },
+    { "id": "build", "label": "Builds" },
+    { "id": "redstone", "label": "Redstone" },
+    { "id": "survival", "label": "Survival" }
+  ]
+}
