@@ -14,6 +14,9 @@ function logout() {
 // DOM Elements
 let videoGrid, videoTabs, emptyState, videoModal, videoPlayer, videoTitle, videoDescription;
 
+// Category label map (for display)
+let categoryLabelMap = {};
+
 function initElements() {
   videoGrid = document.getElementById('video-grid');
   videoTabs = document.getElementById('video-tabs');
@@ -27,6 +30,12 @@ function initElements() {
 // Render video tabs
 function renderTabs(categories) {
   videoTabs.innerHTML = '';
+  // Build label map
+  categoryLabelMap = {};
+  categories.forEach(cat => {
+    categoryLabelMap[cat.id] = cat.label;
+  });
+
   categories.forEach(cat => {
     const tab = document.createElement('button');
     tab.className = `video-tab ${cat.id === 'all' ? 'active' : ''}`;
@@ -61,26 +70,36 @@ function renderVideos(category = 'all') {
   });
 }
 
+// SVG placeholder for missing thumbnails
+const PLACEHOLDER_SVG = `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 9"><rect fill="#1a1a2e" width="16" height="9"/><text x="8" y="5.5" text-anchor="middle" fill="#4CAF50" font-size="2.5" font-family="sans-serif">🎬</text></svg>`)}`;
+
 // Create video card element
 function createVideoCard(video) {
   const card = document.createElement('div');
   card.className = 'video-card';
+  const hasBvid = video.bvid && video.bvid.trim() !== '';
+  const catLabel = categoryLabelMap[video.category] || video.category || '';
+
   card.innerHTML = `
     <div class="video-card-thumb">
-      <img src="${video.thumbnail || 'assets/videos/thumbnails/default.jpg'}"
+      <img src="${video.thumbnail || PLACEHOLDER_SVG}"
            alt="${video.title}"
            loading="lazy"
-           onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 9%22><rect fill=%22%23333%22 width=%2216%22 height=%229%22/><text x=%228%22 y=%225%22 text-anchor=%22middle%22 fill=%22%23666%22 font-size=%222%22>📹</text></svg>'">
-      <div class="video-play-icon"></div>
+           onerror="this.src='${PLACEHOLDER_SVG}'">
+      ${hasBvid ? '<div class="video-play-icon"></div>' : '<div class="video-coming-soon">即将上线</div>'}
       ${video.duration ? `<span class="video-duration">${video.duration}</span>` : ''}
     </div>
     <div class="video-card-info">
-      <h3 class="video-card-title">${video.title}</h3>
-      ${video.category ? `<span class="video-card-category">${video.category}</span>` : ''}
+      <h3 class="video-card-title">${video.cardName || video.title}</h3>
+      <span class="video-card-category">${catLabel}</span>
     </div>
   `;
 
-  card.addEventListener('click', () => openVideoModal(video));
+  if (hasBvid) {
+    card.addEventListener('click', () => openVideoModal(video));
+  } else {
+    card.classList.add('video-card-locked');
+  }
   return card;
 }
 
@@ -95,7 +114,7 @@ function openVideoModal(video) {
   // Check if Bilibili video
   if (video.bvid) {
     videoPlayer.innerHTML = `
-      <iframe src="//player.bilibili.com/player.html?bvid=${video.bvid}&autoplay=1"
+      <iframe src="//player.bilibili.com/player.html?bvid=${video.bvid}&autoplay=1&high_quality=1"
               scrolling="no"
               border="0"
               frameborder="no"
@@ -103,24 +122,33 @@ function openVideoModal(video) {
               allowfullscreen="true">
       </iframe>
     `;
-  } else if (video.file) {
-    // Direct video file
-    videoPlayer.innerHTML = `
-      <video controls autoplay>
-        <source src="assets/videos/${video.file}" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    `;
   } else {
     videoPlayer.innerHTML = `
-      <div style="display:flex; align-items:center; justify-content:center; height:100%; color:var(--mc-stone);">
-        <p>Video not available</p>
+      <div class="video-unavailable">
+        <p>视频即将上线，敬请期待</p>
+        <p class="video-unavailable-hint">Coming Soon</p>
       </div>
     `;
   }
 
   videoModal.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
+}
+
+// Render video stats
+function renderStats() {
+  const statsEl = document.getElementById('video-stats');
+  if (!statsEl) return;
+  const stats = videoData.getStats();
+  if (stats.total === 0) {
+    statsEl.classList.add('hidden');
+    return;
+  }
+  statsEl.classList.remove('hidden');
+  statsEl.innerHTML = `
+    <span class="stats-total">共 ${stats.total} 个视频</span>
+    ${stats.available > 0 ? `<span class="stats-available">${stats.available} 个可播放</span>` : '<span class="stats-pending">视频陆续上传中</span>'}
+  `;
 }
 
 // Close video modal
@@ -132,7 +160,6 @@ function closeVideoModal() {
 
 // Initialize app
 async function init() {
-  // Init DOM elements
   initElements();
 
   // Check auth (optional for video page)
@@ -144,7 +171,6 @@ async function init() {
     if (userDisplay) userDisplay.textContent = user;
     if (logoutBtn) logoutBtn.addEventListener('click', logout);
   } else {
-    // Hide user info if not logged in
     if (userDisplay) userDisplay.classList.add('hidden');
     if (logoutBtn) logoutBtn.classList.add('hidden');
   }
@@ -155,16 +181,15 @@ async function init() {
   // Render UI
   renderTabs(videoData.getCategories());
   renderVideos();
+  renderStats();
 
   // Event listeners
   document.getElementById('btn-close-video')?.addEventListener('click', closeVideoModal);
 
-  // Close modal on background click
   videoModal?.addEventListener('click', (e) => {
     if (e.target === videoModal) closeVideoModal();
   });
 
-  // Close modal on Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !videoModal.classList.contains('hidden')) {
       closeVideoModal();
@@ -172,5 +197,4 @@ async function init() {
   });
 }
 
-// Start the app
 init();

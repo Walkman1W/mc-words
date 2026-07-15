@@ -53,6 +53,13 @@ class VideoData {
   setCategory(category) {
     this.currentCategory = category;
   }
+
+  getStats() {
+    if (!this.data || !this.data.videos) return { total: 0, available: 0 };
+    const total = this.data.videos.length;
+    const available = this.data.videos.filter(v => v.bvid && v.bvid.trim() !== '').length;
+    return { total, available };
+  }
 }
 
 export const videoData = new VideoData();
