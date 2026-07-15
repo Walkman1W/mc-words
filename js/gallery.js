@@ -1,8 +1,9 @@
 import { getCategories, getCurrentCategory, setCurrentCategory } from './categories.js';
-import { getCardsForCategory, getCardImagePath } from './cardData.js';
+import { getCardsForCategory, getCardImagePath, getCardImageBlobUrl } from './cardData.js';
 import { openGame, openPreview } from './game.js';
 import { getCategoryTime, getLeaderboard, getPlayerRank, formatTimeMs, getCardTime } from './timer.js';
 import { getConfig, isCardUnlocked, getFavorites } from './progress.js';
+import { getRankInfo, getCategoryStars, isCategoryCompleted } from './rank.js';
 
 let showingFavorites = false;
 
@@ -10,6 +11,7 @@ export function initGallery() {
   renderTabs();
   renderCards();
   renderCategoryStats();
+  renderRankBadge();
   initLeaderboard();
 }
 
@@ -47,7 +49,7 @@ function renderTabs() {
   });
 }
 
-export function renderCards() {
+export async function renderCards() {
   if (showingFavorites) {
     renderFavorites();
     return;
@@ -63,27 +65,27 @@ export function renderCards() {
     return;
   }
 
-  grid.innerHTML = cards.map((card, index) => {
+  const cardHtmls = await Promise.all(cards.map(async (card, index) => {
     const unlocked = isCardUnlocked(categoryId, index);
-    const imgPath = getCardImagePath(categoryId, card.image);
 
     if (unlocked) {
+      const blobUrl = await getCardImageBlobUrl(categoryId, card.image);
       const cardTime = getCardTime(categoryId, card.id);
       const timeLabel = cardTime ? `<div class="card-time">${formatTimeMs(cardTime)}</div>` : '';
       return `
         <div class="card-thumb" data-category="${categoryId}" data-index="${index}">
           ${timeLabel}
-          <img src="${imgPath}" alt="${card.word}" onerror="this.style.display='none'">
+          <img src="${blobUrl}" alt="${card.word}" onerror="this.style.display='none'">
           <div class="card-label">${card.word}</div>
         </div>
       `;
     } else {
+      const imgHtml = lockConfig.showThumbnailOnLocked
+        ? `<img src="${await getCardImageBlobUrl(categoryId, card.image)}" alt="${card.word}" onerror="this.style.display='none'">`
+        : `<div class="card-locked-icon">?</div>`;
       return `
         <div class="card-thumb card-locked" data-category="${categoryId}" data-index="${index}">
-          ${lockConfig.showThumbnailOnLocked
-            ? `<img src="${imgPath}" alt="${card.word}" onerror="this.style.display='none'">`
-            : `<div class="card-locked-icon">?</div>`
-          }
+          ${imgHtml}
           ${lockConfig.showWordOnLocked
             ? `<div class="card-label">${card.word}</div>`
             : `<div class="card-label">???</div>`
@@ -92,7 +94,9 @@ export function renderCards() {
         </div>
       `;
     }
-  }).join('');
+  }));
+
+  grid.innerHTML = cardHtmls.join('');
 
   grid.querySelectorAll('.card-thumb:not(.card-locked)').forEach(thumb => {
     thumb.addEventListener('click', () => {
@@ -104,7 +108,7 @@ export function renderCards() {
   });
 }
 
-function renderFavorites() {
+async function renderFavorites() {
   const grid = document.getElementById('card-grid');
   const favorites = getFavorites();
   const categories = getCategories();
@@ -126,8 +130,8 @@ function renderFavorites() {
     return;
   }
 
-  grid.innerHTML = allFavCards.map(({ card, categoryId }) => {
-    const imgPath = getCardImagePath(categoryId, card.image);
+  const cardHtmls = await Promise.all(allFavCards.map(async ({ card, categoryId }) => {
+    const blobUrl = await getCardImageBlobUrl(categoryId, card.image);
     const cards = getCardsForCategory(categoryId);
     const index = cards.findIndex(c => c.id === card.id);
     const cardTime = getCardTime(categoryId, card.id);
@@ -135,11 +139,13 @@ function renderFavorites() {
     return `
       <div class="card-thumb" data-category="${categoryId}" data-index="${index}">
         ${timeLabel}
-        <img src="${imgPath}" alt="${card.word}" onerror="this.style.display='none'">
+        <img src="${blobUrl}" alt="${card.word}" onerror="this.style.display='none'">
         <div class="card-label">${card.word}</div>
       </div>
     `;
-  }).join('');
+  }));
+
+  grid.innerHTML = cardHtmls.join('');
 
   grid.querySelectorAll('.card-thumb').forEach(thumb => {
     thumb.addEventListener('click', () => {
@@ -162,11 +168,20 @@ function renderCategoryStats() {
   const categoryId = getCurrentCategory();
   const totalTime = getCategoryTime(categoryId);
   const playerRank = getPlayerRank(categoryId);
+  const completed = isCategoryCompleted(categoryId);
+  const stars = completed ? getCategoryStars(categoryId) : 0;
 
   if (!totalTime) {
     statsEl.innerHTML = `<div class="stats-empty">Complete cards to see your stats</div>`;
     return;
   }
+
+  const starsHtml = completed ? `
+    <div class="stat-item">
+      <span class="stat-label">Rating</span>
+      <span class="category-stars">${renderStars(stars)}</span>
+    </div>
+  ` : '';
 
   statsEl.innerHTML = `
     <div class="stats-bar">
@@ -180,7 +195,29 @@ function renderCategoryStats() {
         <span class="stat-value rank-value">#${playerRank.rank}</span>
       </div>
       ` : ''}
+      ${starsHtml}
     </div>
+  `;
+}
+
+function renderStars(count) {
+  let html = '';
+  for (let i = 0; i < 3; i++) {
+    if (i < count) html += '<span class="star-filled">⭐</span>';
+    else html += '<span class="star-empty">☆</span>';
+  }
+  return html;
+}
+
+export function renderRankBadge() {
+  const el = document.getElementById('rank-display');
+  if (!el) return;
+  const info = getRankInfo();
+  el.setAttribute('data-level', info.level);
+  el.innerHTML = `
+    <span class="rank-icon">${info.icon}</span>
+    <span class="rank-name">${info.name}</span>
+    <span class="rank-score">${info.score}pts</span>
   `;
 }
 

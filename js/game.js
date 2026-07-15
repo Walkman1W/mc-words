@@ -1,4 +1,4 @@
-import { getCardImagePath } from './cardData.js';
+import { getCardImagePath, getCardImageBlobUrl } from './cardData.js';
 import { startCardTimer, stopCardTimer, recordCardTime, formatTimeMs, getCardTime } from './timer.js';
 import { markCardCompleted, getConfig, toggleFavorite, isFavorited } from './progress.js';
 
@@ -107,7 +107,7 @@ function cleanupListeners() {
   }
 }
 
-function setupSpellingGame() {
+async function setupSpellingGame() {
   cleanupListeners();
 
   const thumbImg = document.getElementById('game-thumb-img');
@@ -118,8 +118,8 @@ function setupSpellingGame() {
   const attemptsEl = document.getElementById('game-attempts');
   const retryBar = document.getElementById('game-retry-bar');
 
-  const imgPath = getCardImagePath(currentCategoryId, currentCard.image);
-  thumbImg.src = imgPath;
+  const blobUrl = await getCardImageBlobUrl(currentCategoryId, currentCard.image);
+  thumbImg.src = blobUrl;
   thumbImg.alt = currentCard.word;
 
   const hint = currentCard.word.split('').map(c => c === ' ' ? '  ' : '_').join(' ');
@@ -299,7 +299,7 @@ function showRetryBar() {
   retryBar.classList.remove('hidden');
 }
 
-function showResult() {
+async function showResult() {
   const gameArea = document.getElementById('game-area');
   const gameResult = document.getElementById('game-result');
   const resultImage = document.getElementById('result-image');
@@ -320,8 +320,8 @@ function showResult() {
     timeEl.textContent = cardTime ? `⏱ ${formatTimeMs(cardTime)}` : '';
   }
 
-  const imgPath = getCardImagePath(currentCategoryId, currentCard.image);
-  resultImage.src = imgPath;
+  const blobUrl = await getCardImageBlobUrl(currentCategoryId, currentCard.image);
+  resultImage.src = blobUrl;
   resultImage.alt = currentCard.word;
   resultImage.classList.remove('hidden');
   backBtn.textContent = '← Back to Cards';
@@ -353,7 +353,7 @@ function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
-export function openPreview(card, categoryId) {
+export async function openPreview(card, categoryId) {
   currentCard = card;
   currentCategoryId = categoryId;
   currentCardIndex = null;
@@ -374,8 +374,8 @@ export function openPreview(card, categoryId) {
 
   resultWord.textContent = card.word;
 
-  const imgPath = getCardImagePath(categoryId, card.image);
-  resultImage.src = imgPath;
+  const blobUrl = await getCardImageBlobUrl(categoryId, card.image);
+  resultImage.src = blobUrl;
   resultImage.alt = card.word;
   resultImage.classList.remove('hidden');
 

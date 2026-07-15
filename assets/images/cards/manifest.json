@@ -226,6 +226,31 @@
       "id": "020",
       "word": "Saddle",
       "image": "020-Saddle.png"
+    },
+    {
+      "id": "021",
+      "word": "Boat",
+      "image": "021-Boat.png"
+    },
+    {
+      "id": "022",
+      "word": "Minecart",
+      "image": "022-Minecart.png"
+    },
+    {
+      "id": "023",
+      "word": "Anvil",
+      "image": "023-Anvil.png"
+    },
+    {
+      "id": "024",
+      "word": "Enchanted Book",
+      "image": "024-Enchanted Book.png"
+    },
+    {
+      "id": "025",
+      "word": "Firework Rocket",
+      "image": "025-Firework Rocket.png"
     }
   ],
   "03-weapon": [

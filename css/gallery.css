@@ -99,7 +99,7 @@
   height: 100%;
   object-fit: cover;
   object-position: 75% 8%;
-  transform: scale(1.8);
+  transform: scale(1.25);
   transform-origin: 75% 8%;
   image-rendering: pixelated;
 }

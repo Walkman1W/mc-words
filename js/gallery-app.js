@@ -1,9 +1,11 @@
 import { loadCardData } from './cardData.js';
-import { initGallery, renderCards } from './gallery.js';
+import { initGallery, renderCards, renderRankBadge } from './gallery.js';
 import { initGame } from './game.js';
 import { initTimer } from './timer.js';
 import { loadConfig, initProgress } from './progress.js';
 import { initAuth, getCurrentUser, logout } from './auth.js';
+import { initRank } from './rank.js';
+import { initImageProtection } from './image-protect.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   initAuth();
@@ -23,10 +25,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   await loadCardData();
   initProgress(username);
   initTimer(username);
+  initRank(username);
   initGallery();
   initGame();
+  initImageProtection();
 
   document.addEventListener('card-completed', () => {
     renderCards();
+    renderRankBadge();
   });
 });

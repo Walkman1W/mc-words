@@ -1,9 +1,25 @@
 {
-  "name": "minecraft-word-cards",
+  "name": "task08",
   "version": "1.0.0",
-  "description": "Learn English words through Minecraft cards",
+  "main": "bilibili-upload.js",
   "scripts": {
-    "build": "node generate-manifest.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Walkman1W/minecraft-word-cards.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Walkman1W/minecraft-word-cards/issues"
+  },
+  "homepage": "https://github.com/Walkman1W/minecraft-word-cards#readme",
+  "description": "",
+  "dependencies": {
+    "playwright": "^1.61.1",
+    "puppeteer-core": "^25.3.0"
   }
 }
