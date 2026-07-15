@@ -348,11 +348,14 @@
 
 /* Video Modal */
 .video-modal-content {
-  max-width: 900px;
-  width: 95%;
+  max-width: 95vw;
+  width: 95vw;
+  max-height: 95vh;
   padding: 0;
   background: var(--mc-dark);
-  border: 4px solid var(--mc-gold);
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .video-player-wrapper {
@@ -363,7 +366,7 @@
 
 .video-player {
   width: 100%;
-  aspect-ratio: 16/9;
+  height: 80vh;
 }
 
 .video-player iframe {
