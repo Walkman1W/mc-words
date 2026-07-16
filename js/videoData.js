@@ -21,7 +21,7 @@ class VideoData {
   async load() {
     try {
       // Try to load from manifest
-      const response = await fetch('assets/videos/manifest.json');
+      const response = await fetch('assets/videos/manifest.json?v=' + Date.now());
       if (response.ok) {
         this.data = await response.json();
       } else {
