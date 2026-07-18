@@ -64,8 +64,9 @@ function renderVideos(category = 'all') {
   emptyState.classList.add('hidden');
   videoGrid.classList.remove('hidden');
 
-  videos.forEach(video => {
-    const card = createVideoCard(video);
+  videos.forEach((video, index) => {
+    // 每个分类内从001开始编号
+    const card = createVideoCard(video, index + 1);
     videoGrid.appendChild(card);
   });
 }
@@ -74,23 +75,25 @@ function renderVideos(category = 'all') {
 const PLACEHOLDER_SVG = `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 9"><rect fill="#1a1a2e" width="16" height="9"/><text x="8" y="5.5" text-anchor="middle" fill="#4CAF50" font-size="2.5" font-family="sans-serif">🎬</text></svg>`)}`;
 
 // Create video card element
-function createVideoCard(video) {
+function createVideoCard(video, sequenceNum) {
   const card = document.createElement('div');
   card.className = 'video-card';
   const hasBvid = video.bvid && video.bvid.trim() !== '';
   const catLabel = categoryLabelMap[video.category] || video.category || '';
+  const thumbnailSrc = video.thumbnail || PLACEHOLDER_SVG;
+  const displayNum = String(sequenceNum).padStart(3, '0');
 
   card.innerHTML = `
     <div class="video-card-thumb">
-      <img src="${video.thumbnail || PLACEHOLDER_SVG}"
+      <img src="${thumbnailSrc}"
            alt="${video.title}"
-           loading="lazy"
-           onerror="this.src='${PLACEHOLDER_SVG}'">
+           loading="eager"
+           onerror="this.onerror=null; this.src='${PLACEHOLDER_SVG}'">
       ${hasBvid ? '<div class="video-play-icon"></div>' : '<div class="video-coming-soon">即将上线</div>'}
       ${video.duration ? `<span class="video-duration">${video.duration}</span>` : ''}
     </div>
     <div class="video-card-info">
-      <h3 class="video-card-title">${video.cardName || video.title}</h3>
+      <h3 class="video-card-title"><span class="video-card-num">${displayNum}</span> ${video.cardName || video.title}</h3>
       <span class="video-card-category">${catLabel}</span>
     </div>
   `;
