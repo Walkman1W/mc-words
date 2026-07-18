@@ -1,0 +1,129 @@
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  border-radius: 6px;
+  font-family: var(--font-mc);
+  font-size: 0.5rem;
+  color: var(--mc-gold);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.rank-badge .rank-icon {
+  font-size: 0.8rem;
+}
+
+.rank-badge .rank-name {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.rank-badge .rank-score {
+  font-size: 0.4rem;
+  color: var(--mc-stone);
+  margin-left: 4px;
+}
+
+.rank-badge[data-level="0"] {
+  border-color: rgba(158, 158, 158, 0.3);
+  color: var(--mc-stone);
+}
+
+.rank-badge[data-level="1"] {
+  border-color: rgba(139, 90, 43, 0.5);
+  color: #c49a6c;
+}
+
+.rank-badge[data-level="2"] {
+  border-color: rgba(158, 158, 158, 0.5);
+  color: #b0b0b0;
+}
+
+.rank-badge[data-level="3"] {
+  border-color: rgba(200, 200, 200, 0.5);
+  color: #e0e0e0;
+}
+
+.rank-badge[data-level="4"] {
+  border-color: rgba(255, 215, 0, 0.5);
+  color: var(--mc-gold);
+}
+
+.rank-badge[data-level="5"] {
+  border-color: rgba(0, 230, 255, 0.5);
+  color: #00e6ff;
+  box-shadow: 0 0 8px rgba(0, 230, 255, 0.2);
+}
+
+.rank-badge[data-level="6"] {
+  border-color: rgba(180, 60, 255, 0.6);
+  color: #d580ff;
+  box-shadow: 0 0 12px rgba(180, 60, 255, 0.3);
+  animation: netheriteGlow 2s ease-in-out infinite;
+}
+
+@keyframes netheriteGlow {
+  0%, 100% { box-shadow: 0 0 8px rgba(180, 60, 255, 0.3); }
+  50% { box-shadow: 0 0 16px rgba(180, 60, 255, 0.5); }
+}
+
+.category-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 0.6rem;
+}
+
+.category-stars .star-filled {
+  color: var(--mc-gold);
+  text-shadow: 0 0 4px rgba(255, 215, 0, 0.5);
+}
+
+.category-stars .star-empty {
+  color: rgba(158, 158, 158, 0.4);
+}
+
+.stat-item .category-stars {
+  margin-left: 4px;
+}
+
+.rank-progress {
+  font-family: var(--font-mc);
+  font-size: 0.4rem;
+  color: var(--mc-stone);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rank-progress-bar {
+  width: 60px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.rank-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--mc-green), var(--mc-gold));
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .rank-badge {
+    font-size: 0.4rem;
+    padding: 4px 10px;
+    gap: 6px;
+  }
+  .rank-badge .rank-icon {
+    font-size: 0.7rem;
+  }
+  .rank-badge .rank-score {
+    display: none;
+  }
+}
