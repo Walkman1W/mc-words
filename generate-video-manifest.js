@@ -34,8 +34,8 @@ function loadCardNameMap(categoryDir) {
     const match = file.match(/^(\d+)-(.+)\.png$/);
     if (match) {
       const num = parseInt(match[1], 10);
-      const name = match[2].trim();
-      map[num] = name;
+      // 保留真实文件名，避免名称含空格等字符时拼错路径
+      map[num] = { name: match[2].trim(), file };
     }
   }
   return map;
@@ -49,8 +49,8 @@ const VIDEO_TO_CARDS_MAP = {
   '04-food': '04-food',
   '05-ore': '05-ore',
   '06-redstone': '06-armor',
-  '07-animal': '07-redstone',
-  '08-monster': '08-spawn-egg'
+  '07-animal': '07-animal',
+  '08-monster': '08-monster'
 };
 
 // 找到对应的卡片分类目录
@@ -141,13 +141,16 @@ function main() {
     console.log(`${videoDir.name} (${catInfo.label}): ${videos.length} 个视频`);
 
     for (const v of videos) {
-      const cardName = nameMap[v.num] || `Video ${v.num}`;
+      const card = nameMap[v.num];
+      const cardName = card ? card.name : `Video ${v.num}`;
+      // 使用视频缩略图路径，避免服务器防盗链问题
+      const thumbnailPath = `assets/videos/thumbnails/${String(allVideos.length + 1).padStart(3, '0')}.jpg`;
       allVideos.push({
         id: String(allVideos.length + 1).padStart(3, '0'),
         bvid: '', // 待上传B站后填入
         title: `${cardName} - Minecraft英语单词`,
         description: `学习Minecraft中${cardName}的英语表达`,
-        thumbnail: cardsDir ? `assets/images/cards/${cardsDir}/${String(v.num).padStart(3, '0')}-${cardName}.png` : '',
+        thumbnail: thumbnailPath,
         duration: '',
         category: catInfo.id,
         cardName: cardName,

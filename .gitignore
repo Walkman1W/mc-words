@@ -10,3 +10,17 @@ Thumbs.db
 bilibili-video-list.json
 verify-covers/
 verify-sheets/
+
+# 密钥与登录态（绝不提交）
+bilibili-cookies.json
+cookies.json
+.chrome-profile/
+.playwright-profile/
+
+# 大文件与本地产物
+*.pdf
+upload-shots/
+bili-covers/
+.wrangler/
+assets/books/
+assets/books-output/

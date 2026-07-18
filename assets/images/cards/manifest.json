@@ -58,7 +58,7 @@
     {
       "id": "012",
       "word": "Wood Planks",
-      "image": "012-Wood Planks .png"
+      "image": "012-Wood Planks.png"
     },
     {
       "id": "013",
@@ -220,7 +220,7 @@
     {
       "id": "019",
       "word": "Name Tag",
-      "image": "019-Name Tag .png"
+      "image": "019-Name Tag.png"
     },
     {
       "id": "020",
@@ -681,7 +681,211 @@
       "image": "021-Horse Armor.png"
     }
   ],
-  "07-redstone": [
+  "07-animal": [
+    {
+      "id": "001",
+      "word": "Cod",
+      "image": "001-Cod.jpg"
+    },
+    {
+      "id": "002",
+      "word": "Squid",
+      "image": "002-Squid.jpg"
+    },
+    {
+      "id": "003",
+      "word": "Salmon",
+      "image": "003-Salmon.jpg"
+    },
+    {
+      "id": "004",
+      "word": "Chicken",
+      "image": "004-Chicken.jpg"
+    },
+    {
+      "id": "005",
+      "word": "Llama",
+      "image": "005-Llama.jpg"
+    },
+    {
+      "id": "006",
+      "word": "Pig",
+      "image": "006-Pig.jpg"
+    },
+    {
+      "id": "007",
+      "word": "Sheep",
+      "image": "007-Sheep.jpg"
+    },
+    {
+      "id": "008",
+      "word": "Cow",
+      "image": "008-Cow.jpg"
+    },
+    {
+      "id": "009",
+      "word": "Rabbit",
+      "image": "009-Rabbit.jpg"
+    },
+    {
+      "id": "010",
+      "word": "Wolf",
+      "image": "010-Wolf.jpg"
+    },
+    {
+      "id": "011",
+      "word": "Cat",
+      "image": "011-Cat.jpg"
+    },
+    {
+      "id": "012",
+      "word": "Donkey",
+      "image": "012-Donkey.jpg"
+    },
+    {
+      "id": "013",
+      "word": "Mule",
+      "image": "013-Mule.jpg"
+    },
+    {
+      "id": "014",
+      "word": "Panda",
+      "image": "014-Panda.jpg"
+    },
+    {
+      "id": "015",
+      "word": "Frog",
+      "image": "015-Frog.jpg"
+    },
+    {
+      "id": "016",
+      "word": "Happy Ghast",
+      "image": "016-Happy Ghast.jpg"
+    },
+    {
+      "id": "017",
+      "word": "Ocelot",
+      "image": "017-Ocelot.jpg"
+    },
+    {
+      "id": "018",
+      "word": "Horse",
+      "image": "018-Horse.jpg"
+    },
+    {
+      "id": "019",
+      "word": "Bee",
+      "image": "019-Bee.jpg"
+    },
+    {
+      "id": "020",
+      "word": "Slime",
+      "image": "020-Slime.jpg"
+    }
+  ],
+  "08-monster": [
+    {
+      "id": "001",
+      "word": "Creeper",
+      "image": "001-Creeper.jpg"
+    },
+    {
+      "id": "002",
+      "word": "Zombie",
+      "image": "002-Zombie.jpg"
+    },
+    {
+      "id": "003",
+      "word": "Husk",
+      "image": "003-Husk.jpg"
+    },
+    {
+      "id": "004",
+      "word": "Skeleton",
+      "image": "004-Skeleton.jpg"
+    },
+    {
+      "id": "005",
+      "word": "Stray",
+      "image": "005-Stray.jpg"
+    },
+    {
+      "id": "006",
+      "word": "Piglin",
+      "image": "006-Piglin.jpg"
+    },
+    {
+      "id": "007",
+      "word": "Piglin Brute",
+      "image": "007-Piglin Brute.jpg"
+    },
+    {
+      "id": "008",
+      "word": "Zombified Piglin",
+      "image": "008-Zombified Piglin.jpg"
+    },
+    {
+      "id": "009",
+      "word": "Drowned",
+      "image": "009-Drowned.jpg"
+    },
+    {
+      "id": "010",
+      "word": "Zombie Villager",
+      "image": "010-Zombie Villager.jpg"
+    },
+    {
+      "id": "011",
+      "word": "Hoglin",
+      "image": "011-Hoglin.jpg"
+    },
+    {
+      "id": "012",
+      "word": "Strider",
+      "image": "012-Strider.jpg"
+    },
+    {
+      "id": "013",
+      "word": "Mooshroom",
+      "image": "013-Mooshroom.jpg"
+    },
+    {
+      "id": "014",
+      "word": "Magma Cube",
+      "image": "014-Magma Cube.jpg"
+    },
+    {
+      "id": "015",
+      "word": "Blaze",
+      "image": "015-Blaze.jpg"
+    },
+    {
+      "id": "016",
+      "word": "Wither",
+      "image": "016-Wither.jpg"
+    },
+    {
+      "id": "017",
+      "word": "Ender Dragon",
+      "image": "017-Ender Dragon.jpg"
+    },
+    {
+      "id": "018",
+      "word": "Warden",
+      "image": "018-Warden.jpg"
+    },
+    {
+      "id": "019",
+      "word": "Cave Spider",
+      "image": "019-Cave Spider.jpg"
+    },
+    {
+      "id": "020",
+      "word": "Ghast",
+      "image": "020-Ghast.jpg"
+    }
+  ],
+  "09-redstone": [
     {
       "id": "001",
       "word": "Redstone",
@@ -783,7 +987,7 @@
       "image": "020-Target Block.png"
     }
   ],
-  "08-spawn-egg": [
+  "10-spawn-egg": [
     {
       "id": "001",
       "word": "Spawn Egg",

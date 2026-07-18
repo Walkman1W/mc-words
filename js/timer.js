@@ -83,7 +83,31 @@ const LEADERBOARD_DATA = {
     { name: 'NetherWalker', time: 53400 },
     { name: 'BlockMaster', time: 59200 },
   ],
-  '07-redstone': [
+  '07-animal': [
+    { name: 'AnimalFan', time: 12800 },
+    { name: 'FarmHero', time: 16500 },
+    { name: 'SteveBuilder', time: 20200 },
+    { name: 'DiamondDave', time: 24100 },
+    { name: 'PixelMiner', time: 28300 },
+    { name: 'CraftQueen', time: 32600 },
+    { name: 'EnderHero', time: 36900 },
+    { name: 'RedstonePro', time: 41500 },
+    { name: 'NetherWalker', time: 46200 },
+    { name: 'BlockMaster', time: 51800 },
+  ],
+  '08-monster': [
+    { name: 'MonsterSlayer', time: 14200 },
+    { name: 'CreeperKing', time: 18100 },
+    { name: 'MobHunter', time: 22300 },
+    { name: 'SteveBuilder', time: 26500 },
+    { name: 'EnderHero', time: 30800 },
+    { name: 'DiamondDave', time: 35200 },
+    { name: 'PixelMiner', time: 39700 },
+    { name: 'CraftQueen', time: 44300 },
+    { name: 'NetherWalker', time: 49100 },
+    { name: 'BlockMaster', time: 54500 },
+  ],
+  '09-redstone': [
     { name: 'RedstonePro', time: 13500 },
     { name: 'MumboJumbo', time: 17200 },
     { name: 'SteveBuilder', time: 21800 },
@@ -95,7 +119,7 @@ const LEADERBOARD_DATA = {
     { name: 'NetherWalker', time: 49800 },
     { name: 'BlockMaster', time: 55100 },
   ],
-  '08-spawn-egg': [
+  '10-spawn-egg': [
     { name: 'MobHunter', time: 15100 },
     { name: 'CreeperKing', time: 19600 },
     { name: 'SteveBuilder', time: 23400 },

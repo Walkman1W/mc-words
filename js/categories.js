@@ -5,8 +5,10 @@ const ALL_CATEGORIES = [
   { id: '04-food', label: 'Food' },
   { id: '05-ore', label: 'Ore' },
   { id: '06-armor', label: 'Armor' },
-  { id: '07-redstone', label: 'Redstone' },
-  { id: '08-spawn-egg', label: 'Spawn Egg' },
+  { id: '07-animal', label: 'Animal' },
+  { id: '08-monster', label: 'Monster' },
+  { id: '09-redstone', label: 'Redstone' },
+  { id: '10-spawn-egg', label: 'Spawn Egg' },
 ];
 
 let currentCategory = null;

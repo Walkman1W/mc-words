@@ -1,0 +1,15 @@
+/assets/images/cards/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Content-Security-Policy: frame-ancestors 'none'
+  Cache-Control: no-store, no-cache, must-revalidate
+  X-Robots-Tag: noindex, nofollow
+
+/assets/images/cards/manifest.json
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+
+/assets/images/cards/manifest.dat
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+  Content-Type: application/octet-stream

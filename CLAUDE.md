@@ -18,6 +18,10 @@ node generate-manifest.js
 # Generate video manifest from local video files (E:\mc-cards-vedio\01-08)
 node generate-video-manifest.js
 
+# Generate lightweight video thumbnails into assets/videos/thumbnails/
+# (run after generate-video-manifest.js; also rewrites manifest thumbnail paths)
+python generate-video-thumbnails.py
+
 # Update BV IDs in video manifest (interactive)
 node update-bvid.js
 

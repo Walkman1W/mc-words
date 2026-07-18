@@ -1,0 +1,15 @@
+# Exclude large files
+assets/books/minecraft-word-cards.pdf
+*.pdf
+
+# Exclude node modules
+node_modules/
+
+# Exclude server files
+server.js
+generate-manifest.js
+package.json
+package-lock.json
+
+# Exclude Python scripts
+*.py

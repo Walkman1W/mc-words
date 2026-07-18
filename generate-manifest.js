@@ -4,7 +4,8 @@ const path = require('path');
 const CARDS_DIR = path.join(__dirname, 'assets', 'images', 'cards');
 const CATEGORIES = [
   '01-block', '02-tool', '03-weapon', '04-food',
-  '05-ore', '06-armor', '07-redstone', '08-spawn-egg',
+  '05-ore', '06-armor', '07-animal', '08-monster',
+  '09-redstone', '10-spawn-egg',
 ];
 const FILE_PATTERN = /^(\d{3})-(.+)\.(png|jpg|jpeg)$/i;
 
