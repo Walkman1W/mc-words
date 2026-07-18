@@ -5,3 +5,8 @@ Thumbs.db
 
 # 环境变量（含API密钥）
 .env
+
+# B站核对脚本生成物
+bilibili-video-list.json
+verify-covers/
+verify-sheets/
