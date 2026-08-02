@@ -58,6 +58,72 @@
   background: linear-gradient(180deg, #00a1d6 0%, #0091c2 50%, #0077a8 100%);
 }
 
+/* Long Videos Section */
+.long-video-section {
+  margin-bottom: 30px;
+}
+
+.long-video-heading {
+  font-size: 0.85rem;
+  color: var(--mc-gold);
+  text-shadow: 2px 2px 0 var(--mc-dark-brown);
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.long-video-heading-en {
+  font-size: 0.55rem;
+  color: var(--mc-stone);
+  margin-left: 8px;
+}
+
+.long-video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+  padding: 15px;
+  background: var(--mc-dark);
+  border: 2px solid var(--mc-stone);
+  border-radius: 4px;
+}
+
+.long-video-card {
+  border-color: var(--mc-brown);
+}
+
+/* 占位卡：补满长视频网格最后一行 */
+.long-video-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  background: var(--mc-darker);
+  border-style: dashed;
+  border-color: var(--mc-stone);
+  cursor: default;
+  opacity: 0.6;
+}
+
+.long-video-placeholder:hover {
+  border-color: var(--mc-stone);
+  transform: none;
+  box-shadow: none;
+}
+
+.long-video-placeholder-text {
+  font-family: var(--font-mc);
+  font-size: 0.7rem;
+  color: var(--mc-gold);
+  text-align: center;
+  line-height: 2;
+}
+
+.long-video-placeholder-en {
+  display: block;
+  font-size: 0.5rem;
+  color: var(--mc-stone);
+}
+
 /* Video Tabs */
 .videos-content {
   max-width: 1200px;
@@ -456,6 +522,12 @@
 
 @media (max-width: 480px) {
   .videos-content {
+    padding: 12px;
+  }
+
+  .long-video-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
     padding: 12px;
   }
 

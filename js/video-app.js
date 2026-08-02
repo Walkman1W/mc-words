@@ -1,5 +1,5 @@
 // Video App - Main entry point for videos page
-import { videoData } from './videoData.js';
+import { videoData } from './videoData.js?v=3';
 
 // Auth helpers (simplified - reuse from gallery)
 function getCurrentUser() {
@@ -69,6 +69,62 @@ function renderVideos(category = 'all') {
     const card = createVideoCard(video, index + 1);
     videoGrid.appendChild(card);
   });
+}
+
+// Render long videos section
+function renderLongVideos() {
+  const section = document.getElementById('long-video-section');
+  const grid = document.getElementById('long-video-grid');
+  if (!section || !grid) return;
+
+  const longVideos = videoData.getLongVideos();
+  if (longVideos.length === 0) {
+    section.classList.add('hidden');
+    return;
+  }
+
+  section.classList.remove('hidden');
+  grid.innerHTML = '';
+
+  longVideos.forEach(video => {
+    const hasBvid = video.bvid && video.bvid.trim() !== '';
+    const catLabel = categoryLabelMap[video.category] || video.category || '';
+    const thumbnailSrc = video.thumbnail || PLACEHOLDER_SVG;
+
+    const card = document.createElement('div');
+    card.className = 'video-card long-video-card';
+    card.innerHTML = `
+      <div class="video-card-thumb">
+        <img src="${thumbnailSrc}"
+             alt="${video.title}"
+             loading="eager"
+             onerror="this.onerror=null; this.src='${PLACEHOLDER_SVG}'">
+        ${hasBvid ? '<div class="video-play-icon"></div>' : '<div class="video-coming-soon">即将上线</div>'}
+        ${video.duration ? `<span class="video-duration">${video.duration}</span>` : ''}
+      </div>
+      <div class="video-card-info">
+        <h3 class="video-card-title">${video.title}</h3>
+        <span class="video-card-category">${catLabel}</span>
+      </div>
+    `;
+
+    if (hasBvid) {
+      card.addEventListener('click', () => openVideoModal(video));
+    } else {
+      card.classList.add('video-card-locked');
+    }
+    grid.appendChild(card);
+  });
+
+  // 补满最后一行的占位卡（3 列网格）
+  const remainder = longVideos.length % 3;
+  const placeholders = remainder === 0 ? 0 : 3 - remainder;
+  for (let i = 0; i < placeholders; i++) {
+    const placeholder = document.createElement('div');
+    placeholder.className = 'video-card long-video-placeholder';
+    placeholder.innerHTML = '<div class="long-video-placeholder-text">敬请期待<span class="long-video-placeholder-en">Stay Tuned</span></div>';
+    grid.appendChild(placeholder);
+  }
 }
 
 // SVG placeholder for missing thumbnails
@@ -183,6 +239,7 @@ async function init() {
 
   // Render UI
   renderTabs(videoData.getCategories());
+  renderLongVideos();
   renderVideos();
   renderStats();
 

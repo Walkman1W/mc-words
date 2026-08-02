@@ -41,6 +41,10 @@ class VideoData {
     return this.data.videos.filter(v => v.category === category);
   }
 
+  getLongVideos() {
+    return this.data?.longVideos || [];
+  }
+
   getCategories() {
     return this.data?.categories || DEFAULT_VIDEOS.categories;
   }
