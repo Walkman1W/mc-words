@@ -7,7 +7,7 @@ const CATEGORIES = [
   '05-ore', '06-armor', '07-animal', '08-monster',
   '09-redstone', '10-spawn-egg',
 ];
-const FILE_PATTERN = /^(\d{3})-(.+)\.(png|jpg|jpeg)$/i;
+const FILE_PATTERN = /^(\d{3})-(.+)\.(png|jpg|jpeg|webp)$/i;
 
 function encode(str) {
   const json = JSON.stringify(str);

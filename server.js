@@ -1,6 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const zlib = require('zlib');
 
 const PORT = 8080;
 const ROOT = __dirname;
@@ -11,7 +12,7 @@ const CATEGORIES = [
   '05-ore', '06-armor', '07-animal', '08-monster',
   '09-redstone', '10-spawn-egg',
 ];
-const FILE_PATTERN = /^(\d{3})-(.+)\.(png|jpg|jpeg)$/i;
+const FILE_PATTERN = /^(\d{3})-(.+)\.(png|jpg|jpeg|webp)$/i;
 
 function encode(str) {
   const json = JSON.stringify(str);
@@ -47,6 +48,7 @@ const MIME_TYPES = {
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
+  '.webp': 'image/webp',
   '.svg': 'image/svg+xml',
   '.ico': 'image/x-icon',
   '.dat': 'application/octet-stream',
@@ -54,6 +56,42 @@ const MIME_TYPES = {
   '.webm': 'video/webm',
   '.ogg': 'video/ogg',
 };
+
+// Compression helper - gzip for text-based responses
+const TEXT_TYPES = ['text/', 'application/javascript', 'application/json'];
+
+function compressResponse(req, res, data, headers) {
+  const contentType = headers['Content-Type'] || '';
+  const isText = TEXT_TYPES.some(t => contentType.startsWith(t));
+  if (!isText || data.length < 256) {
+    res.writeHead(200, headers);
+    res.end(data);
+    return;
+  }
+  const accept = req.headers['accept-encoding'] || '';
+  if (accept.includes('br')) {
+    zlib.brotliCompress(data, (err, compressed) => {
+      if (err) { res.writeHead(200, headers); res.end(data); return; }
+      headers['Content-Encoding'] = 'br';
+      headers['Content-Length'] = compressed.length;
+      headers['Vary'] = 'Accept-Encoding';
+      res.writeHead(200, headers);
+      res.end(compressed);
+    });
+  } else if (accept.includes('gzip')) {
+    zlib.gzip(data, (err, compressed) => {
+      if (err) { res.writeHead(200, headers); res.end(data); return; }
+      headers['Content-Encoding'] = 'gzip';
+      headers['Content-Length'] = compressed.length;
+      headers['Vary'] = 'Accept-Encoding';
+      res.writeHead(200, headers);
+      res.end(compressed);
+    });
+  } else {
+    res.writeHead(200, headers);
+    res.end(data);
+  }
+}
 
 function isAllowedReferer(req) {
   const referer = req.headers['referer'] || '';
@@ -92,7 +130,7 @@ const server = http.createServer((req, res) => {
   }
 
   // Protect image files: require Referer header
-  if (url.startsWith('/assets/images/cards/') && /\.(png|jpg|jpeg)$/i.test(url)) {
+  if (url.startsWith('/assets/images/cards/') && /\.(png|jpg|jpeg|webp)$/i.test(url)) {
     if (!isAllowedReferer(req)) {
       res.writeHead(403, { 'Content-Type': 'text/plain' });
       res.end('Hotlinking not allowed');
@@ -127,13 +165,30 @@ const server = http.createServer((req, res) => {
     const mime = MIME_TYPES[ext] || 'application/octet-stream';
     const headers = { 'Content-Type': mime };
 
-    if (url.startsWith('/assets/images/cards/')) {
+    // Cache headers by content type
+    if (ext === '.html') {
+      headers['Cache-Control'] = 'public, max-age=3600, must-revalidate';
+    } else if (ext === '.css' || ext === '.js') {
+      headers['Cache-Control'] = 'public, max-age=604800, immutable';
+    } else if (/\.(png|jpg|jpeg|webp|svg|ico)$/.test(ext)) {
+      headers['Cache-Control'] = 'public, max-age=2592000, immutable';
       headers['X-Content-Type-Options'] = 'nosniff';
-      headers['Cache-Control'] = 'no-store';
+    } else if (ext === '.json') {
+      headers['Cache-Control'] = 'public, max-age=3600';
     }
 
-    res.writeHead(200, headers);
-    fs.createReadStream(filePath).pipe(res);
+    // Compress text-based files
+    const isText = TEXT_TYPES.some(t => mime.startsWith(t)) || ext === '.html' || ext === '.css';
+    if (isText) {
+      fs.readFile(filePath, (readErr, data) => {
+        if (readErr) { res.writeHead(500); res.end('Internal Error'); return; }
+        compressResponse(req, res, data, headers);
+      });
+    } else {
+      headers['Content-Length'] = stats.size;
+      res.writeHead(200, headers);
+      fs.createReadStream(filePath).pipe(res);
+    }
   });
 });
 
