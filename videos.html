@@ -14,8 +14,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- 微信分享抓取用隐藏缩略图 -->
-  <div style="position:absolute;width:0;height:0;overflow:hidden;" aria-hidden="true"><img src="/assets/images/share-cover.jpg" alt=""></div>
+  <!-- 微信分享抓取用缩略图：真实尺寸渲染但移出视口 -->
+  <img src="/assets/images/share-cover.jpg" alt="" width="600" height="842" aria-hidden="true"
+       style="position:fixed;left:-9999px;top:-9999px;width:600px;height:842px;pointer-events:none;z-index:-1;">
   <!-- Videos Page -->
   <div class="videos-page">
     <header class="videos-header">
