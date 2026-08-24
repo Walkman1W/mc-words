@@ -60,11 +60,13 @@
 .header-index { color: var(--electric-blue); }
 
 .book2-hero {
-  width: min(960px, 100%);
-  margin: 34px auto 0;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  width: min(1200px, 100%);
+  min-height: calc(100vh - 100px);
+  margin: 18px auto 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(340px, .8fr);
+  align-items: center;
+  gap: clamp(34px, 6vw, 88px);
   position: relative;
   z-index: 1;
 }
@@ -100,9 +102,9 @@
 .corner-br { right: -7px; bottom: -7px; border-right: 3px solid #af7dff; border-bottom: 3px solid #af7dff; }
 
 .book2-copy {
-  width: min(780px, calc(100% - 34px));
-  margin: -20px auto 0;
-  padding: 42px clamp(24px, 6vw, 68px) 38px;
+  width: 100%;
+  margin: 0;
+  padding: 38px clamp(24px, 4vw, 52px) 34px;
   position: relative;
   z-index: 2;
   text-align: center;
@@ -121,7 +123,7 @@
   margin-top: 22px;
   color: #fff;
   font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
-  font-size: clamp(2.1rem, 4.2vw, 3.8rem);
+  font-size: clamp(2.15rem, 3.5vw, 3.65rem);
   line-height: 1.14;
   letter-spacing: .08em;
   text-shadow: 0 0 32px rgba(68, 145, 255, .37);
@@ -190,11 +192,30 @@
   line-height: 1.6;
 }
 
-@media (max-width: 680px) {
-  .book2-page { padding: 20px 24px 38px; }
-  .book2-hero { margin-top: 26px; }
-  .book2-copy { width: 100%; margin-top: 0; padding: 34px 20px 30px; }
-  .header-soon { font-size: .84rem; }
-  .eyebrow, .title-en, .release-note { font-size: .48rem; }
-  .presale-contact { margin-top: 25px; text-align: left; }
+@media (max-width: 760px) {
+  .book2-page { padding: 12px 16px 20px; }
+  .book2-header { min-height: 28px; }
+  .header-soon { font-size: .72rem; }
+  .header-index { display: none; }
+  .back-link { font-size: .48rem; }
+
+  .book2-hero {
+    min-height: auto;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .poster-wrap { width: min(72vw, 310px); }
+  .book2-copy { padding: 18px 16px 16px; }
+  .book2-copy h1 { margin-top: 11px; font-size: clamp(1.65rem, 8.8vw, 2.2rem); }
+  .eyebrow, .title-en, .release-note { font-size: .4rem; }
+  .title-en { margin-top: 9px; letter-spacing: 1px; }
+  .copy-line { width: 48px; margin: 14px auto 13px; }
+  .description { font-size: .84rem; line-height: 1.65; }
+
+  .presale-contact { margin-top: 16px; gap: 9px; padding: 6px 9px 6px 6px; }
+  .presale-contact img { width: 74px; height: 74px; padding: 3px; }
+  .presale-contact p { font-size: .7rem; }
 }
