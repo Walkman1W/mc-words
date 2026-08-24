@@ -1,0 +1,179 @@
+:root {
+  --book2-paper: #efe5c6;
+  --book2-ink: #253124;
+  --book2-moss: #4d7f39;
+  --book2-gold: #d59a24;
+  --book2-shadow: #172117;
+}
+
+.book2-page {
+  min-height: 100vh;
+  padding: 28px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, .12) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(rgba(0, 0, 0, .12) 1px, transparent 1px) 0 0 / 28px 28px,
+    radial-gradient(circle at 50% -10%, #426b36 0, #263e2a 38%, #111a17 78%);
+}
+
+.book2-page::before,
+.book2-page::after {
+  content: '';
+  position: absolute;
+  width: 22vmax;
+  height: 22vmax;
+  background: #76a64c;
+  opacity: .14;
+  transform: rotate(45deg);
+  box-shadow: 0 0 0 20px rgba(13, 22, 15, .16);
+}
+
+.book2-page::before { top: -14vmax; left: -12vmax; }
+.book2-page::after { right: -12vmax; bottom: -14vmax; }
+
+.back-link {
+  position: fixed;
+  top: 22px;
+  left: 24px;
+  z-index: 1;
+  color: #f5e8c6;
+  font-size: .58rem;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-shadow: 2px 2px 0 #142015;
+}
+
+.back-link:hover { color: var(--mc-gold); }
+
+.coming-soon-card {
+  width: min(100%, 560px);
+  padding: 44px 34px 32px;
+  position: relative;
+  text-align: center;
+  color: var(--book2-ink);
+  background:
+    linear-gradient(90deg, transparent 49%, rgba(120, 84, 36, .13) 50%, transparent 51%),
+    repeating-linear-gradient(0deg, rgba(122, 92, 49, .06) 0 1px, transparent 1px 5px),
+    var(--book2-paper);
+  border: 8px solid #754a27;
+  outline: 4px solid #c58b3a;
+  box-shadow: 0 0 0 10px #382617, 14px 18px 0 rgba(0, 0, 0, .34);
+}
+
+.coming-soon-card::before,
+.coming-soon-card::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: var(--book2-moss);
+  box-shadow: 0 0 0 4px #294d28;
+}
+
+.coming-soon-card::before { top: 15px; left: 15px; }
+.coming-soon-card::after { right: 15px; bottom: 15px; }
+
+.eyebrow {
+  color: #816130;
+  font-size: .54rem;
+  letter-spacing: 1.4px;
+}
+
+.book-mark {
+  width: 50px;
+  height: 50px;
+  margin: 18px auto 14px;
+  display: grid;
+  place-items: center;
+  color: #fff4cb;
+  font-size: 1rem;
+  background: var(--book2-moss);
+  border: 5px solid #2c592e;
+  box-shadow: 5px 5px 0 #243d22;
+}
+
+.coming-soon-card h1 {
+  color: var(--book2-moss);
+  font-size: clamp(1.8rem, 7vw, 2.65rem);
+  letter-spacing: 4px;
+  text-shadow: 3px 3px 0 #c5b77f;
+}
+
+.video-label {
+  margin-top: 10px;
+  color: #846d3d;
+  font-size: .58rem;
+  letter-spacing: 2px;
+}
+
+.divider {
+  margin: 26px auto 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.divider span { height: 4px; flex: 1; background: #b78631; }
+.divider i { width: 12px; height: 12px; background: #b78631; transform: rotate(45deg); }
+
+.coming-soon {
+  color: #315e2f;
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 8vw, 2.9rem);
+  letter-spacing: .12em;
+}
+
+.coming-soon-en {
+  margin-top: 10px;
+  color: #a27128;
+  font-size: .55rem;
+  letter-spacing: 1.3px;
+}
+
+.description {
+  margin: 22px auto 0;
+  color: #4a593a;
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+  font-size: .9rem;
+  line-height: 1.8;
+}
+
+.qr-section { margin-top: 25px; }
+
+.qr-frame {
+  width: 182px;
+  height: 182px;
+  margin: 0 auto;
+  padding: 9px;
+  background: #fffdf4;
+  border: 5px solid #4a6331;
+  box-shadow: 5px 5px 0 #293b22;
+}
+
+.qr-frame img { display: block; width: 100%; height: 100%; image-rendering: pixelated; }
+
+.scan-hint {
+  margin-top: 15px;
+  color: #7a5c30;
+  font-size: .52rem;
+  letter-spacing: 1.5px;
+}
+
+.page-url {
+  display: inline-block;
+  margin-top: 10px;
+  color: #2d672f;
+  font-size: .58rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 480px) {
+  .book2-page { padding: 76px 18px 28px; }
+  .coming-soon-card { padding: 34px 22px 28px; border-width: 6px; outline-width: 3px; }
+  .qr-frame { width: 168px; height: 168px; }
+}
