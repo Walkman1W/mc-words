@@ -60,18 +60,17 @@
 .header-index { color: var(--electric-blue); }
 
 .book2-hero {
-  width: min(1050px, 100%);
-  min-height: calc(100vh - 104px);
-  margin: 18px auto 0;
-  display: grid;
-  grid-template-columns: minmax(360px, 1.2fr) minmax(280px, .8fr);
-  align-items: center;
-  gap: clamp(38px, 8vw, 120px);
+  width: min(960px, 100%);
+  margin: 34px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   position: relative;
   z-index: 1;
 }
 
 .poster-wrap {
+  width: 100%;
   padding: 8px;
   position: relative;
   background: linear-gradient(135deg, rgba(97, 183, 255, .9), rgba(92, 55, 255, .25) 34%, rgba(192, 85, 255, .9));
@@ -100,7 +99,17 @@
 .corner-tl { top: -7px; left: -7px; border-top: 3px solid #fff; border-left: 3px solid #fff; }
 .corner-br { right: -7px; bottom: -7px; border-right: 3px solid #af7dff; border-bottom: 3px solid #af7dff; }
 
-.book2-copy { max-width: 485px; }
+.book2-copy {
+  width: min(780px, calc(100% - 34px));
+  margin: -20px auto 0;
+  padding: 42px clamp(24px, 6vw, 68px) 38px;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(9, 22, 42, .97), rgba(8, 16, 29, .95));
+  border: 1px solid rgba(113, 169, 255, .32);
+  box-shadow: 0 20px 52px rgba(0, 0, 0, .42), inset 0 0 38px rgba(36, 125, 255, .06);
+}
 
 .eyebrow {
   color: #7ea7ee;
@@ -129,12 +138,15 @@
 .copy-line {
   width: 66px;
   height: 3px;
-  margin: 31px 0 26px;
+  margin: 31px auto 26px;
   background: linear-gradient(90deg, var(--electric-blue), var(--violet));
   box-shadow: 0 0 13px rgba(59, 124, 255, .75);
 }
 
 .description {
+  max-width: 490px;
+  margin-right: auto;
+  margin-left: auto;
   color: #d8e2f7;
   font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
   font-size: clamp(1rem, 1.7vw, 1.2rem);
@@ -180,10 +192,8 @@
 
 @media (max-width: 680px) {
   .book2-page { padding: 20px 24px 38px; }
-  .book2-hero { min-height: auto; grid-template-columns: 1fr; gap: 38px; padding: 26px 0 20px; }
-  .poster-wrap { width: min(100%, 520px); margin: 0 auto; }
-  .book2-copy { text-align: center; }
-  .copy-line { margin-right: auto; margin-left: auto; }
+  .book2-hero { margin-top: 26px; }
+  .book2-copy { width: 100%; margin-top: 0; padding: 34px 20px 30px; }
   .header-soon { font-size: .84rem; }
   .eyebrow, .title-en, .release-note { font-size: .48rem; }
   .presale-contact { margin-top: 25px; text-align: left; }
