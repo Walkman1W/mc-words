@@ -16,6 +16,24 @@ let videoGrid, videoTabs, emptyState, videoModal, videoPlayer, videoTitle, video
 
 // Category label map (for display)
 let categoryLabelMap = {};
+let lastVideoTrigger = null;
+
+function bindVideoCard(card, video) {
+  card.tabIndex = 0;
+  card.setAttribute('role', 'button');
+  const open = () => {
+    lastVideoTrigger = card;
+    openVideoModal(video);
+    document.getElementById('btn-close-video').focus();
+  };
+  card.addEventListener('click', open);
+  card.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      open();
+    }
+  });
+}
 
 function initElements() {
   videoGrid = document.getElementById('video-grid');
@@ -109,7 +127,7 @@ function renderLongVideos() {
     `;
 
     if (hasBvid) {
-      card.addEventListener('click', () => openVideoModal(video));
+      bindVideoCard(card, video);
     } else {
       card.classList.add('video-card-locked');
     }
@@ -155,7 +173,7 @@ function createVideoCard(video, sequenceNum) {
   `;
 
   if (hasBvid) {
-    card.addEventListener('click', () => openVideoModal(video));
+    bindVideoCard(card, video);
   } else {
     card.classList.add('video-card-locked');
   }
@@ -174,6 +192,8 @@ function openVideoModal(video) {
   if (video.bvid) {
     videoPlayer.innerHTML = `
       <iframe src="//player.bilibili.com/player.html?bvid=${video.bvid}&autoplay=1&high_quality=1"
+              title="B站视频播放器"
+              allow="autoplay; fullscreen"
               scrolling="no"
               border="0"
               frameborder="no"
@@ -190,6 +210,7 @@ function openVideoModal(video) {
     `;
   }
 
+  document.querySelector('.videos-page').inert = true;
   videoModal.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
 }
@@ -212,9 +233,11 @@ function renderStats() {
 
 // Close video modal
 function closeVideoModal() {
+  document.querySelector('.videos-page').inert = false;
   videoModal.classList.add('hidden');
   videoPlayer.innerHTML = '';
   document.body.style.overflow = '';
+  lastVideoTrigger?.focus();
 }
 
 // Initialize app

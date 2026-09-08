@@ -1,48 +1,94 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>我的世界短句卡｜敬请期待</title>
-  <meta name="description" content="我的世界短句卡制作中，敬请期待。预售请添加二维码联系。">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="我的世界短句卡｜敬请期待">
-  <meta property="og:description" content="我的世界短句卡制作中，敬请期待。预售请添加二维码联系。">
-  <meta property="og:image" content="https://mcword.com/assets/images/book2-video-promo.png">
-  <meta property="og:image:width" content="1448">
-  <meta property="og:image:height" content="1086">
-  <meta property="og:image:type" content="image/png">
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/videos2.css">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-</head>
-<body>
-  <main class="book2-page">
-    <header class="book2-header">
-      <a class="back-link" href="../index.html" aria-label="返回首页">← HOME</a>
-      <p class="header-soon">敬请期待</p>
-      <span class="header-index">02</span>
-    </header>
-
-    <section class="book2-hero" aria-labelledby="book2-title">
-      <div class="poster-wrap">
-        <span class="corner corner-tl" aria-hidden="true"></span>
-        <span class="corner corner-br" aria-hidden="true"></span>
-        <img class="book2-poster" src="../assets/images/book2-video-promo.png" alt="我的世界短句卡实物场景图">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>我的世界短句卡｜视频专辑</title>
+    <meta
+      name="description"
+      content="我的世界短句卡视频专辑：在 Minecraft 场景里跟读简单英语短句。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="我的世界短句卡｜视频专辑" />
+    <meta
+      property="og:description"
+      content="8 大主题，5 集已上线。看视频，跟读 Minecraft 英语短句。"
+    />
+    <meta
+      property="og:image"
+      content="https://mcword.com/assets/images/book2-video-promo.png"
+    />
+    <link rel="stylesheet" href="../css/main.css?v=2" />
+    <link rel="stylesheet" href="../css/videos2.css?v=2" />
+    <link rel="stylesheet" href="/css/learning-support.css?v=6" />
+    <link rel="stylesheet" href="/css/video-theme.css?v=1" />
+  </head>
+  <body class="video-library">
+    <main class="book2-page">
+      <header class="book2-header">
+        <a class="back-link" href="../index.html" aria-label="返回首页"
+          >← 首页</a
+        >
+        <a
+          class="bilibili-link"
+          href="https://space.bilibili.com/422489691"
+          target="_blank"
+          rel="noopener"
+          >B站主页 ↗</a
+        >
+      </header>
+      <section class="book2-intro" aria-labelledby="book2-title">
+        <h1 id="book2-title">我的世界短句卡</h1>
+        <p class="intro-subtitle">
+          在熟悉的方块世界里，听一听、说一说简单英语。
+        </p>
+      </section>
+      <div class="video-layout">
+        <learning-support></learning-support>
+        <section class="episodes-section" aria-labelledby="episodes-title">
+          <div class="section-heading">
+            <div>
+              <h2 id="episodes-title">短句卡视频</h2>
+            </div>
+            <p class="section-status">
+              <span class="status-dot"></span> 已上线 5 集 · 持续更新
+            </p>
+          </div>
+          <div id="episode-grid" class="episode-grid" aria-live="polite"></div>
+        </section>
       </div>
-
-      <div class="book2-copy">
-        <p class="eyebrow">MINECRAFT WORD CARDS · BOOK 2</p>
-        <h1 id="book2-title">短句卡制作中<br>敬请期待</h1>
-        <p class="title-en">MINECRAFT SHORT SENTENCE CARDS · COMING SOON</p>
-        <div class="copy-line" aria-hidden="true"></div>
-        <p class="description">从单词到短句，<br>让孩子在 Minecraft 的情景里，<br>自然开口说英语。</p>
-        <div class="presale-contact">
-          <img src="../assets/images/联系预售.png" width="140" height="140" alt="预售联系二维码">
-          <p>预售请添加二维码联系</p>
+      <footer class="book2-footer">
+        <span>MCWORD.COM</span><span>在方块世界里，自然开口说英语</span>
+      </footer>
+    </main>
+    <div
+      id="video-modal"
+      class="video-modal hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <div class="modal-backdrop" data-close-modal></div>
+      <div class="modal-panel">
+        <button
+          id="btn-close-video"
+          class="btn-close"
+          type="button"
+          aria-label="关闭视频"
+        >
+          ✕
+        </button>
+        <div class="modal-player"><div id="video-player"></div></div>
+        <div class="modal-info">
+          <h2 id="modal-title"></h2>
+          <p id="modal-description"></p>
+          <a id="bilibili-fallback" target="_blank" rel="noopener"
+            >在 B站打开本集 ↗</a
+          >
         </div>
       </div>
-    </section>
-  </main>
-</body>
+    </div>
+    <script type="module" src="../js/learning-support.js?v=5"></script>
+    <script type="module" src="../js/book2-video-app.js?v=3"></script>
+  </body>
 </html>

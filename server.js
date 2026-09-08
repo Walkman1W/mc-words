@@ -109,7 +109,10 @@ function isAllowedReferer(req) {
 const server = http.createServer((req, res) => {
   let url = decodeURIComponent(req.url.split('?')[0]);
 
-  // Match the public Book 2 video URL when previewing the static site locally.
+  // Match the public video URLs when previewing the static site locally.
+  if (url === '/videos' || url === '/videos/') {
+    url = '/videos.html';
+  }
   if (url === '/videos2' || url === '/videos2/') {
     url = '/videos2/index.html';
   }

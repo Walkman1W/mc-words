@@ -1,0 +1,58 @@
+/* Shared by the two video libraries only. */
+.video-library {
+  --font-mc:
+    "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
+  --page-bg: #091523;
+  --panel-bg: #111f30;
+  --panel-hover: #17293d;
+  --line: #2a3c50;
+  --text: #edf3fa;
+  --muted: #a8b8ca;
+  --accent: #91c9fb;
+  font-family: var(--font-mc);
+  background: var(--page-bg);
+  color: var(--text);
+  overflow-x: visible;
+}
+.video-library button,
+.video-library a,
+.video-library h1,
+.video-library h2,
+.video-library h3,
+.video-library p,
+.video-library span,
+.video-library small {
+  font-family: inherit;
+}
+.video-library button,
+.video-library a {
+  -webkit-tap-highlight-color: transparent;
+}
+.video-library a {
+  color: var(--accent);
+}
+.video-library :is(button, a, [role="button"]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.video-library .btn-close {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line);
+  background: var(--panel-bg);
+  border-radius: 50%;
+  color: var(--text);
+  font-size: 20px;
+  cursor: pointer;
+}
+.video-library .btn-close:hover {
+  background: var(--panel-hover);
+}
+@media (prefers-reduced-motion: reduce) {
+  .video-library *,
+  .video-library *::before,
+  .video-library *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
