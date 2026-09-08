@@ -114,11 +114,14 @@
 }
 .coming-label {
   position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-size: 15px;
-  color: var(--muted);
+  right: 10px;
+  bottom: 10px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  background: #091523e6;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #edf3fa;
 }
 .episode-body {
   padding: 14px;
