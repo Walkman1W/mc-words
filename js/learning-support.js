@@ -27,13 +27,17 @@ class LearningSupport extends HTMLElement {
 
             </div>
         </section>
-        <div class="support-ai"><h3>MC 英语 AI 伴读</h3><span class="support-soon">即将上线</span></div>
+        <section class="support-ai" aria-label="MC · AI伴读预告">
+          <div class="support-ai-heading"><h3><a class="support-ai-link" href="https://ai.mcword.com/free" target="_blank" rel="noopener">MC · AI伴读</a></h3><span class="support-soon">内测中，即将上线</span></div>
+          <p class="support-ai-lead">翻开书，听见我的世界</p>
+          <p class="support-ai-intro">把熟悉的方块世界，变成每天一点的英语练习。搭配纸质卡片，听示范、读单词，再试着说一句。</p>
+        </section>
       </aside>
       <dialog class="support-dialog" aria-label="客服微信二维码"><button class="support-close" type="button" aria-label="关闭二维码">✕</button><h2>添加客服微信</h2><img src="/assets/images/customer-wechat.png" width="330" height="330" alt="客服微信二维码，可使用微信扫一扫"><p>微信扫一扫 / 长按图片识别</p></dialog>`;
     const dialog = this.querySelector("dialog");
-    this.querySelector(".support-qr-button").addEventListener("click", () =>
-      dialog.showModal(),
-    );
+    this.querySelectorAll(".support-qr-button").forEach((button) => {
+      button.addEventListener("click", () => dialog.showModal());
+    });
     this.querySelector(".support-close").addEventListener("click", () =>
       dialog.close(),
     );

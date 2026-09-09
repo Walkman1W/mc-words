@@ -91,22 +91,15 @@ learning-support {
 }
 .support-contact small { font-size: 10px; line-height: 1.8; color: var(--accent); }
 .support-ai {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  padding: 14px 16px;
+  padding: 18px 16px;
   border-top: 1px solid var(--line);
+  background: #102335;
 }
-.support-ai h3 {
-  font-size: 13px;
-  font-weight: 500;
-}
-.support-soon {
-  font-size: 11px;
-  color: var(--muted);
-  white-space: nowrap;
-}
+.support-ai-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.support-ai h3 { font-size: 15px; font-weight: 700; line-height: 1.5; }
+.support-soon { padding: 2px 7px; border: 1px solid #35516a; border-radius: 20px; font-size: 10px; color: var(--accent); white-space: nowrap; }
+.support-ai-lead { margin: 12px 0 6px; font-size: 19px; font-weight: 700; line-height: 1.5; letter-spacing: -.3px; }
+.support-ai-intro { font-size: 12px; line-height: 1.85; color: var(--muted); }
 .support-dialog {
   margin: auto;
   width: min(390px, calc(100vw - 24px));
@@ -212,3 +205,8 @@ learning-support {
 
 .service-icon svg { width: 16px; height: 16px; }
 @container (min-width:360px) { .service-icon { display: grid; } .support-service small { font-size: 11px; } }
+
+
+.support-ai-link { color: var(--accent); text-decoration: underline; text-decoration-color: #45677f; text-underline-offset: 4px; }
+.support-ai-link:hover { text-decoration-color: currentColor; }
+.support-ai-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 3px; }
