@@ -36,24 +36,24 @@ const EPISODES = [
   },
   {
     page: 6,
+    cid: 41708096956,
     title: "建造我们的家",
     subtitle: "Let’s build our home!",
     image: "/assets/images/book2/episode-06.png",
-    coming: true,
   },
   {
     page: 7,
+    cid: 41732276284,
     title: "怪物之夜",
     subtitle: "Survive the night!",
     image: "/assets/images/book2/episode-07.png",
-    coming: true,
   },
   {
     page: 8,
+    cid: 41732673282,
     title: "最终冒险",
     subtitle: "The final adventure",
     image: "/assets/images/book2/episode-08.png",
-    coming: true,
   },
 ];
 const bvid = "BV16ybu6NEEj",
