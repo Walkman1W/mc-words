@@ -27,7 +27,7 @@ class LearningSupport extends HTMLElement {
 
             </div>
         </section>
-        <a class="support-ai support-ai-link" href="https://ai.mcword.com/free" target="_blank" rel="noopener" aria-label="打开 MC · AI伴读">
+        <a class="support-ai support-ai-link" href="https://mc.useclaw.net" target="_blank" rel="noopener" aria-label="打开 MC · AI伴读">
           <div class="support-ai-heading"><img class="support-ai-logo" src="/assets/images/mcword-logo.png" width="32" height="32" alt=""><h3>MC · AI伴读</h3></div>
           <p class="support-ai-lead">翻开书，听见我的世界</p>
           <p class="support-ai-intro">把熟悉的方块世界，变成每天一点的英语练习。搭配纸质卡片，听示范、读单词，再试着说一句。</p>
