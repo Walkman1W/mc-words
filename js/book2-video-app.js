@@ -95,7 +95,7 @@ function openEpisode(e, card) {
     `https://www.bilibili.com/video/${bvid}/?p=${e.page}`;
   title.textContent = `第${e.page}集 · ${e.title}`;
   description.textContent = e.subtitle;
-  player.innerHTML = `<iframe title="${e.title}" src="https://player.bilibili.com/player.html?bvid=${bvid}&cid=${e.cid}&page=${e.page}&autoplay=1&high_quality=1" scrolling="no" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+  player.innerHTML = `<iframe title="${e.title}" src="https://player.bilibili.com/player.html?bvid=${bvid}&cid=${e.cid}&p=${e.page}&autoplay=1&high_quality=1" scrolling="no" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
   document.querySelector(".book2-page").inert = true;
   modal.classList.remove("hidden");
   document.body.style.overflow = "hidden";
